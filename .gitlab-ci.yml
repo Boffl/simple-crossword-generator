@@ -1,0 +1,16 @@
+stages:
+  - deploy
+
+variables:
+  APP_NAME: team-a
+
+deploy:
+  image: ilyasemenov/gitlab-ci-git-push
+  stage: deploy
+  environment:
+    name: production
+    url: http://172.23.115.113:54347
+  only:
+    - master
+  script:
+    - git-push ssh://dokku@172.23.115.113:22/team-a
