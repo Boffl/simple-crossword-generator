@@ -1,15 +1,14 @@
 from urllib.parse import urlparse
 import psycopg2
-from PyDictionary import PyDictionary
 import wordfreq
 from pandas import read_csv
+import requests
+import re
+from tqdm import tqdm
+import time
 
-dictionary = PyDictionary()
-
-df = read_csv('most-common-nouns-english.csv') # id word plural
-# for word in df['Word']:
-#     print(word, dictionary.meaning(word)['Noun'][0], wordfreq.zipf_frequency(word, 'en'))
-
+# 1000 most common english nouns:
+df = read_csv('most-common-nouns-english.csv') # dataframe with three columns: id word plural
 
 # same definitions as in PyDictionary, but could be useful for hints (Exampl usage)
 # from nltk.corpus import wordnet
@@ -21,7 +20,7 @@ df = read_csv('most-common-nouns-english.csv') # id word plural
 
 
 
-# Words to use: ca 1000, nouns and verbs
+# Words to use: ca 1000, nouns
 
 # for i, word in enumerate(wordfreq.iter_wordlist('en', wordlist='best')):
 #     print(word, wordfreq.zipf_frequency(word, 'en'))
@@ -29,11 +28,6 @@ df = read_csv('most-common-nouns-english.csv') # id word plural
 #     if i > 10:
 #         break
 
-
-
-# Todo:
-    # get the words from the Pydictionary and feed them into the db
-    # https://github.com/geekpradd/PyDictionary
 
 
 # getting the database from the uri:
@@ -63,21 +57,58 @@ connection = psycopg2.connect(
     port = port
 )
 cur = connection.cursor()
-cur.execute('''CREATE TABLE IF NOT EXISTS words (id int PRIMARY KEY, word text, definition text, Zipf_freq float)''')
-sql = '''INSERT INTO words (id, word, definition, zipf_freq)
-            Values (%s, %s, %s, %s); '''
+cur.execute('''CREATE TABLE IF NOT EXISTS words_2 (id int PRIMARY KEY, word text, definition text, hint text, zipf_freq float)''')
+sql = '''INSERT INTO words_3 (id, word, definition, hint, zipf_freq)
+            Values (%s, %s, %s, %s, %s); '''
 
-for i, word in enumerate(df['Word']):
-    try:
-        data = i, word, dictionary.meaning(word)['Noun'][0], wordfreq.zipf_frequency(word, 'en')
+for i, word in tqdm(enumerate(df['Word']), total=1000):
+    # if i > 10:
+    #     break
+    if len(word) > 2:  # some weird words,
+        # try:
+        response = requests.get(f'https://api.dictionaryapi.dev/api/v2/entries/en/{word}')
+        json_data = response.json() if response and response.status_code == 200 else None
 
-        cur.execute(sql, data)
-    except:
-        continue
+        # if we have too many api calls:
+        counter = 0
+        while not json_data and counter < 1: # tried with multiple tries, but I think just one try with enough time is enough...
+            print(f'"{word}" not found, try again in 20s')
+            time.sleep(20)
+            # try again
+            json_data = response.json() if response and response.status_code == 200 else None
+            counter += 1
+        if not json_data: # if the word is just not existent in the api data base
+            print(f'"{word}" not found and will not try again')
+        else:
+            # finding and checking the pos-tag (to prevent some weird words, which slipped in the data, like "no.")
+            try:
+                pos = json_data[0]['meanings'][0]['partOfSpeech']
+                if pos != 'noun':
+                    continue
+            except:
+                print(f"couln't find pos for {word}")
+                continue
+
+            definition = json_data[0]['meanings'][0]['definitions'][0]['definition']
+            try:
+                hint = re.sub(word.lower(), '***', json_data[0]['meanings'][0]['definitions'][0]['example'].lower())
+            except KeyError:
+                hint = ''
+            zipf_freq = wordfreq.zipf_frequency(word, 'en')
+            data = i, word, definition, hint, zipf_freq
+            # data = i, word, dictionary.meaning(word)['Noun'][0], wordfreq.zipf_frequency(word, 'en')
+
+            cur.execute(sql, data)
+        # except TypeError:
+        #     print('TypeError')
+        #     print(data)
+        #     continue
 
 connection.commit()
 cur.close()
 connection.close()
+
+
 # for i, word in enumerate(df['Word']):
 #     cur.execute('''INSERT INTO words''')
 # # df.to_sql('characters', connection, if_exists='replace', index=False)
