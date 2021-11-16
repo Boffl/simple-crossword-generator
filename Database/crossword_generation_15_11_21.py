@@ -89,6 +89,8 @@ class crossword_generator():
                 break
             if self.check_left_middle_right(row_index,column_index,character,-i-1) == False:
                 return False
+            #if self.crossword[row_index -i -1][column_index] != '#' and self.crossword[row_index -i -1][column_index] != character:
+            #    return False
 
         for i,character in enumerate(word_to_append):
             if row_index + i + 1 >= len(self.crossword):
@@ -107,11 +109,15 @@ class crossword_generator():
         for i,character in enumerate(word_to_prepend):
             if column_index - i - 1 < 0:
                 break
+            # if self.crossword[row_index][column_index -i -1] != '#' and self.crossword[row_index][column_index -i -1] != character:
+            #     return False
             if self.check_top_middle_bottom(row_index,column_index,character,-i -1) == False:
                 return False
         for i,character in enumerate(word_to_append):
             if column_index + i + 1 >= len(self.crossword[0]):
                 break
+            # if self.crossword[row_index][column_index +i +1] != '#' and self.crossword[row_index][column_index +i +1] != character:
+            #     return False
             if self.check_top_middle_bottom(row_index,column_index,character,+i +1) == False:
                 return False
         return output
@@ -150,6 +156,9 @@ class crossword_generator():
             else:
                 self.new_crossword[row_index -i -1].pop(column_index)
                 self.new_crossword[row_index -i -1].insert(column_index,character)
+
+        #self.new_crossword.append(self.crossword[row_index])
+
         return 'Done'
 
     def add_word_horizontally(self,word,word_index,row_index,column_index):
@@ -196,7 +205,7 @@ class crossword_generator():
                 row_index += 1
             word_index += 1
 
-words = ['atom','ohm','liama','mona','avatar','tartar','rechtswiedrig','recht','rech','zyp']
+words = ['atom','ohm','liama']
 obj = crossword_generator(words)
 obj.word_by_word()
 print(obj)
