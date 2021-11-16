@@ -162,7 +162,7 @@ class crossword_generator():
         return 'Done'
 
     def add_word_horizontally(self,word,word_index,row_index,column_index):
-        word_to_prepend = word[:word_index]
+        word_to_prepend = word[:word_index][::-1]
         word_to_append = word[word_index+1:]
 
         for i,character in enumerate(word_to_prepend):
@@ -174,7 +174,7 @@ class crossword_generator():
                         self.new_crossword[ind].insert(0,'#')
             else:
                 self.new_crossword[row_index].pop(column_index -i -1)
-                self.new_crossword[row_index].insert(character)
+                self.new_crossword[row_index].insert(column_index -i -1,character)
         for i,character in enumerate(word_to_append):
             if column_index +i +1 >= len(self.crossword[0]):
                 for ind,row in enumerate(self.crossword):
@@ -205,7 +205,7 @@ class crossword_generator():
                 row_index += 1
             word_index += 1
 
-words = ['atom','ohm','liama']
+words = ['atom','ohm','lima','armoury']
 obj = crossword_generator(words)
 obj.word_by_word()
 print(obj)
