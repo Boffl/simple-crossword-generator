@@ -1,0 +1,61 @@
+
+
+
+
+header {
+    text-align: center;
+    background-color: #ffdd99;
+	padding-left: 15px;
+	padding-right: 15px;
+	padding-top: 15px;
+	padding-bottom: 30px;
+}
+
+body {
+	margin: 0;
+}
+
+p {
+    font-family: "Arial";
+}
+
+h1 {
+    font-size: 2em;
+    color: #7d2a06;
+	font-family: "Arial";
+}
+
+h3 {
+    font-size: 1em;
+    color: #7d2a06;
+    font-family: "Arial";
+}
+
+.authors {
+    font-size: 0.8em;
+    font-family: "Arial";
+    color: #cc5200;
+}
+
+.crossword {
+    text-align: center;
+    align-content: center;
+    font-family: "Arial";
+    background-color: #ffdd99;
+    padding-left: 15px;
+	padding-right: 15px;
+	padding-top: 30px;
+	padding-bottom: 30px;
+}
+
+.wordlist {
+    text-align: left;
+    background-color: white;
+    padding-left: 15px;
+	padding-right: 15px;
+	padding-top: 30px;
+	padding-bottom: 30px;
+
+}
+
+
