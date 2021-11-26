@@ -204,8 +204,3 @@ class crossword_generator():
                     column_index += 1
                 row_index += 1
             word_index += 1
-
-words = ['atom','ohm','lima','armoury']
-obj = crossword_generator(words)
-obj.word_by_word()
-print(obj)

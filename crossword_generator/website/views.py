@@ -1,11 +1,11 @@
 from django.shortcuts import render
+import sys
+sys.path.append("..")
+from Database.crossword_generation_15_11_21 import crossword_generator
+from .models import Words3
 
-from .cw_script import crossword_generator
-from website.models import Words3
+
 # Create your views here.
-from django.http import HttpResponse
-import random
-
 
 def index(request):
     """ Main Page """
