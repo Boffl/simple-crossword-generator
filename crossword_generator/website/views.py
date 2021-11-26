@@ -45,7 +45,7 @@ def index(request):
         empty_div = empty_div + "<div class ='row' style='padding:0; margin:0'>"
         for col in range(w):
             if cw_list[row][col] == '#':
-                empty_div = empty_div + "<div class ='col-3' style='width:30px; height:30px; border:thin solid; background:black; padding: 0; margin: 0;'> </div>"
+                empty_div = empty_div + "<div class ='col-3' style='display: flex; width:30px; height:30px; border:thin solid; background:black; padding: 0; margin: 0;'> </div>"
             else:
                 empty_div = empty_div + "<div class ='col-3' style='width:30px; height:30px; border:thin solid; background:white; padding: 0; margin: 0;'> </div>"
         empty_div = empty_div + '</div>'

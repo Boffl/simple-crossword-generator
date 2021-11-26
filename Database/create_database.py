@@ -45,7 +45,9 @@ sql = '''INSERT INTO words_3 (id, word, definition, hint, zipf_freq)
 
 for i, word in tqdm(enumerate(df['Word']), total=1000):
 
-    if len(word) > 2:  # some weird words with one or two letters, also not very useful for a crossword puzzle
+    word = re.sub(r"['\.\?,!]", '', word)  # for some reason there is some words with punctuation in there.....
+
+    if len(word) > 2:  # some weird words with one or two letters are weird, also not very useful for a crossword puzzle
 
         response = requests.get(f'https://api.dictionaryapi.dev/api/v2/entries/en/{word}') # awesome dictionary api :)
         json_data = response.json() if response and response.status_code == 200 else None
@@ -66,7 +68,7 @@ for i, word in tqdm(enumerate(df['Word']), total=1000):
                 pos = json_data[0]['meanings'][0]['partOfSpeech']
                 if pos != 'noun':
                     continue
-            except:
+            except: # this never happens so far
                 print(f"couln't find pos for {word}")
                 continue
 
