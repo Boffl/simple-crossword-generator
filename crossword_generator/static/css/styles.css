@@ -38,6 +38,7 @@ h3 {
 }
 
 
+
 .crossword {
     display:  grid;
     justify-content: center;
@@ -59,6 +60,17 @@ h3 {
 	padding-top: 30px;
 	padding-bottom: 30px;
 
+}
+
+
+#square {
+    position: relative;
+}
+
+#tinynumber {
+    position: absolute;
+    bottom: 0;
+    font-size: 0.2em
 }
 
 

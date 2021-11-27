@@ -1,6 +1,0 @@
-
-
-
-
-def create_empty_div():
-    return 'yes!'
