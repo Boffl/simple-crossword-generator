@@ -63,14 +63,10 @@ h3 {
 }
 
 
-#square {
-    position: relative;
-}
 
-#tinynumber {
+.tinynumber {
     position: absolute;
     bottom: 0;
     font-size: 0.2em
 }
-
 

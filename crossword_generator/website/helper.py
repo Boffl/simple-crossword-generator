@@ -17,7 +17,13 @@ class div_crossword():
 
     def element_empty(self):
         """ blank white div container"""
-        return "<div style='width:30px; height:30px; border:thin solid; background:white; padding: 0; margin: 0;'> </div>"
+        input_cont = "<input type='text' minlength='1' maxlength='1' style='width:29px; height:29px;text-align:center; " \
+                     "border-style:none; border-color:black; position:relative; font-weight:bold; background:transparent; text-transform:uppercase;'>" \
+                     "</input>"
+
+        return "<div style='width:30px; height:30px; border:thin solid; background:white; padding: 0; margin: 0;'> " \
+               + "<div style='position:absolute; font-size:0.5em'> 1 </div>" \
+               + input_cont +"</div>"
 
     def element_black(self):
         return "<div style='width:30px; height:30px; border:thin solid; background:black; padding: 0; margin: 0;'> </div>"
