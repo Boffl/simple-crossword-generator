@@ -1,10 +1,14 @@
 from copy import deepcopy
+import re
 
 class crossword_generator():
     def __init__(self,words):
         self.words = words
         self.crossword = []
         self.new_crossword = []
+        self.word_by_word()
+        self.words_that_did_not_fit = []
+        self.word_indices = self.word_indices()
 
     def size(self):
         return len(self.crossword),len(self.crossword[0])
@@ -89,8 +93,6 @@ class crossword_generator():
                 break
             if self.check_left_middle_right(row_index,column_index,character,-i-1) == False:
                 return False
-            #if self.crossword[row_index -i -1][column_index] != '#' and self.crossword[row_index -i -1][column_index] != character:
-            #    return False
 
         for i,character in enumerate(word_to_append):
             if row_index + i + 1 >= len(self.crossword):
@@ -109,15 +111,11 @@ class crossword_generator():
         for i,character in enumerate(word_to_prepend):
             if column_index - i - 1 < 0:
                 break
-            # if self.crossword[row_index][column_index -i -1] != '#' and self.crossword[row_index][column_index -i -1] != character:
-            #     return False
             if self.check_top_middle_bottom(row_index,column_index,character,-i -1) == False:
                 return False
         for i,character in enumerate(word_to_append):
             if column_index + i + 1 >= len(self.crossword[0]):
                 break
-            # if self.crossword[row_index][column_index +i +1] != '#' and self.crossword[row_index][column_index +i +1] != character:
-            #     return False
             if self.check_top_middle_bottom(row_index,column_index,character,+i +1) == False:
                 return False
         return output
@@ -156,9 +154,6 @@ class crossword_generator():
             else:
                 self.new_crossword[row_index -i -1].pop(column_index)
                 self.new_crossword[row_index -i -1].insert(column_index,character)
-
-        #self.new_crossword.append(self.crossword[row_index])
-
         return 'Done'
 
     def add_word_horizontally(self,word,word_index,row_index,column_index):
@@ -205,7 +200,36 @@ class crossword_generator():
                 row_index += 1
             word_index += 1
 
-words = ['atom','ohm','lima','armoury']
-obj = crossword_generator(words)
-obj.word_by_word()
-print(obj)
+    def word_indices(self):
+        horizontal_words = ["".join(line) for line in self.crossword]
+        vertical_words = []
+        for i in range(len(self.crossword[0])):
+            vertical_words.append("".join([line[i] for line in self.crossword]))
+        indices = {}
+        for word in self.words:
+            for row in horizontal_words:
+                if word in row:
+                    find = re.search(word,row)
+                    span = find.span()
+                    indices[word] = span
+            for column in vertical_words:
+                if word in column:
+                    find = re.search(word,column)
+                    span = find.span()
+                    indices[word] = span
+        return indices
+
+def main():
+    words = ['atom','ohm','molecule','electric']
+    words1 = ['rate', 'act', 'process', 'director', 'example', 'house', 'hospital', 'science', 'role', 'office']
+    words2 = ['john', 'board', 'area', 'name', 'wife', 'energy', 'development', 'way', 'light', 'cup','noam']
+    words3 = ['season', 'list', 'president', 'response', 'side', 'term', 'association', 'person', 'charge', 'education']
+    words4 = ['help', 'language', 'month', 'college', 'project', 'music', 'act', 'party', 'action', 'unit']
+    words5 = ['reason', 'computer', 'project', 'thing', 'history', 'department', 'price', 'sir', 'room', 'man']
+    obj = crossword_generator(words1)
+    print(obj.word_indices)
+    return obj
+
+if __name__ == '__main__':
+    print(main())
+
