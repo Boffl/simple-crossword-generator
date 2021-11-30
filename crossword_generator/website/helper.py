@@ -1,6 +1,6 @@
 
 
-#TODO:  - add generate button
+#TODO:  - link generate button to python script (possibly views function)
 #       - add 'check solutions' button
 #           - save input to list
 #           - compare input to solution list
@@ -8,7 +8,7 @@
 #       - prompt/nr reformatting (waiting on cw_generator update)
 
 class div_crossword():
-    def __init__(self, obj_list, obj_size):
+    def __init__(self, obj_list, obj_size, prompt_words):
         """
         Initialize the crossword, giving access to all necessary html elements
 
@@ -20,11 +20,12 @@ class div_crossword():
         """
         self.obj_list = obj_list
         self.obj_size = obj_size
+        self.prompt_words = prompt_words
 
         h, w = self.obj_size
         cw_list = self.obj_list
 
-        self.empty_html = self.empty_div(h, w, cw_list)
+        self.empty_html = self.empty_div(h, w, cw_list, prompt_words)
         self.filled_html = self.filled_div(h, w, cw_list)
 
 
@@ -56,10 +57,9 @@ class div_crossword():
         return "<div style='width:30px; height:30px; border:thin solid; background:black; padding: 0; margin: 0;'> </div>"
 
 
-    def empty_div(self, h, w, cw_list):
+    def empty_div(self, h, w, cw_list, prompt_words):
         """ Creates the HTML syntax for the empty crossword """
         #TODO: adjust nr. depending on wheter it matches 'start position' of word
-        nr = 1
         empty_div = ""
         for row in range(h):
             empty_div = empty_div + "<div class ='row' style='padding:0; margin:0'>"
@@ -67,6 +67,7 @@ class div_crossword():
                 if cw_list[row][col] == '#':
                     empty_div = empty_div + self.element_black()
                 else:
+                    nr = prompt_words[row][col]
                     empty_div = empty_div + self.element_empty(nr)
             empty_div = empty_div + '</div>'
         return empty_div
@@ -85,3 +86,4 @@ class div_crossword():
                                  + cw_list[row][col] + "</div>"
             filled_div = filled_div + "</div>"
         return filled_div
+

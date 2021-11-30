@@ -1,6 +1,7 @@
 from django.shortcuts import render
 import sys
 sys.path.append("..")
+import numpy as np
 from Database.crossword_generation_15_11_21 import crossword_generator
 from .models import Words3
 from .helper import div_crossword
@@ -10,7 +11,6 @@ from .helper import div_crossword
 
 def index(request):
     """ Main Page """
-
 
     """ Import Data """
     word_list, definition_list = [], []
@@ -25,26 +25,36 @@ def index(request):
 
     """ Create Crosword Object """
     obj = crossword_generator(word_list)
-    obj.word_by_word()
+    h, w = obj.size()
+    stupidlist = []
 
     """ Render HTML Prompt List """
-    fetched_words = "<h3>Prompts:</h3> "
+    prompt_words = list(np.zeros((int(h+1), int(w+1))))
+    prompt_list = "<h3>Prompts:</h3> "
+    j = int(1)
     for i in range(len(word_list)):
-        fetched_words = fetched_words + str(definition_list[i][0]) + "  " + definition_list[i][1] + "<br>"
+        if word_list[i] in obj.word_indices:
+            prompt_list = prompt_list + str(j) + "   " + definition_list[i][1] + "<br>"
+            in1, in2 = obj.word_indices[word_list[i]]
+            stupidlist.append([in1, in2])
+            prompt_words[1][1] = 1
+            j += 1
+
 
     """ Create HTML Crossword Syntax """
     # dimensions of crossword: hxw
-    h, w = obj.size()
     cw_list = obj.crossword
-    html_crossword = div_crossword(cw_list, (h, w))
+    html_crossword = div_crossword(cw_list, (h, w), prompt_words)
 
     """ Display Crossword """
     context = {
         "crossword_empty": html_crossword.empty_html,
         "crossword_solution": html_crossword.filled_html,
 
-        "fetched_word_list": word_list,
-        "fetched_words": fetched_words
+
+        "fetched_word_list": obj.word_indices,
+        "size": obj.size(),
+        "prompt_list": prompt_list
     }
 
     return render(request, 'index.html', context)
