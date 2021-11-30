@@ -38,7 +38,7 @@ class div_crossword():
         if nr == 0:
             str_nr = ""
         else:
-            str_nr = str(nr)
+            str_nr = str(int(nr))
         nr_div = "<div style='position:absolute; font-size:0.5em'>" + str_nr + "</div>"
         input_div = "<input type='text' minlength='1' maxlength='1' style='width:29px; height:29px;text-align:center; " \
                 "border-style:none; border-color:black; position:relative; font-weight:bold; background:transparent; " \
