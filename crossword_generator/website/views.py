@@ -35,9 +35,9 @@ def index(request):
     for i in range(len(word_list)):
         if word_list[i] in obj.word_indices:
             prompt_list = prompt_list + str(j) + "   " + definition_list[i][1] + "<br>"
-            in1, in2 = obj.word_indices[word_list[i]]
+            in1, in2 = obj.word_indices[word_list[i]][0]
             stupidlist.append([in1, in2])
-            prompt_words[1][1] = 1
+            prompt_words[in1][in2] = j
             j += 1
 
 

@@ -207,16 +207,17 @@ class crossword_generator():
             vertical_words.append("".join([line[i] for line in self.crossword]))
         indices = {}
         for word in self.words:
-            for row in horizontal_words:
+            for i,row in enumerate(horizontal_words):
                 if word in row:
                     find = re.search(word,row)
                     span = find.span()
-                    indices[word] = span
-            for column in vertical_words:
+                    # indeices for finding first and last letter in the grid
+                    indices[word] = (i,span[0]),(i, span[1]-1)
+            for i, column in enumerate(vertical_words):
                 if word in column:
                     find = re.search(word,column)
                     span = find.span()
-                    indices[word] = span
+                    indices[word] = (span[0], i), (span[1]-1, i)
         return indices
 
 def main():
