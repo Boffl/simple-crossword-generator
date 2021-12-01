@@ -1,4 +1,5 @@
-
+import django
+import random
 
 #TODO:  - link generate button to python script (possibly views function)
 #       - add 'check solutions' button
@@ -87,3 +88,10 @@ class div_crossword():
             filled_div = filled_div + "</div>"
         return filled_div
 
+
+
+def random_iterator(database: django.db.models.Model, n: int):
+    indices = list(range(n))
+    random.shuffle(indices)
+    for index in indices:
+        yield database.objects.all()[index].word

@@ -2,11 +2,12 @@ from copy import deepcopy
 import re
 
 class crossword_generator():
-    def __init__(self,words):
-        self.words = words
+    def __init__(self,input, size:int):
+        self.input = input
+        self.words = []
         self.crossword = []
         self.new_crossword = []
-        self.word_by_word()
+        self.word_by_word(size)
         self.words_that_did_not_fit = []
         self.word_indices = self.word_indices()
 
@@ -120,12 +121,18 @@ class crossword_generator():
                 return False
         return output
 
-    def word_by_word(self):
+    def word_by_word(self, size):
+        first_word = next(self.input)
+        self.words.append(first_word)
         self.first_word(self.words[0])
         self.new_crossword = deepcopy(self.crossword)
-        for word in self.words[1:]:
-            self.add_word(word)
-            self.crossword = deepcopy(self.new_crossword)
+        for word in self.input:
+            if self.add_word(word):  # check if fits, and execute at the same time (double purpose function)
+                self.crossword = deepcopy(self.new_crossword)
+                self.words.append(word)
+                if len(self.words) == size:
+                    break
+
 
     def add_word_vertically(self,word,word_index,row_index,column_index):
         word_to_prepend = word[:word_index][::-1]
@@ -192,10 +199,10 @@ class crossword_generator():
                     if c == column:
                         if self.word_fits_vertically(word,word_index,row_index,column_index):
                             self.add_word_vertically(word,word_index,row_index,column_index)
-                            return
+                            return True  # return true to check whether word has entered the grid or not
                         if self.word_fits_horizontally(word,word_index,row_index,column_index):
                             self.add_word_horizontally(word,word_index,row_index,column_index)
-                            return
+                            return True  # return true to check whether word has entered the grid or not
                     column_index += 1
                 row_index += 1
             word_index += 1
@@ -227,8 +234,9 @@ def main():
     words3 = ['season', 'list', 'president', 'response', 'side', 'term', 'association', 'person', 'charge', 'education']
     words4 = ['help', 'language', 'month', 'college', 'project', 'music', 'act', 'party', 'action', 'unit']
     words5 = ['reason', 'computer', 'project', 'thing', 'history', 'department', 'price', 'sir', 'room', 'man']
-    obj = crossword_generator(words1)
+    obj = crossword_generator((i for i in words5), 3)
     print(obj.word_indices)
+    print(obj.words)
     return obj
 
 if __name__ == '__main__':
