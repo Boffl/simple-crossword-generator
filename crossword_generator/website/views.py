@@ -26,7 +26,7 @@ def index(request):
 
     """ Create Crosword Object """
     # iterator object (see helper.py)
-    input = random_iterator(Words3, 900) # don't know how much in total, but less than 1000
+    input = random_iterator(Words3, 852) # atm there are exactly 852 words in the db
     obj = crossword_generator(input, 10) # create crossword with 10 words
     h, w = obj.size()  # dimensions of the crossword grid
     word_list = obj.words
