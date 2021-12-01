@@ -38,15 +38,18 @@ def index(request):
     # stupidlist = []
 
     """ Render HTML Prompt List """
-    prompt_words = list(np.zeros((int(h+1), int(w+1))))
+    prompt_words = np.zeros((int(h+1), int(w+1))).tolist()
     prompt_list = "<h3>Prompts:</h3> "
-    j = int(1)
+    j = 1
     for i, word in enumerate(word_list):
         prompt_list = prompt_list + str(j) + "   " + definition_list[i] + "<br>"
         if word in obj.word_indices:  # faulty crosswords produce bad indices, leads to errors
             in1, in2 = obj.word_indices[word][0]
             # stupidlist.append([in1, in2])
-            prompt_words[in1][in2] = j
+            if prompt_words[in1][in2] == 0:
+                prompt_words[in1][in2] = j
+            else:
+                prompt_words[in1][in2] = f"{prompt_words[in1][in2]}/{j}"
         j += 1
 
 
