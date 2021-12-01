@@ -41,6 +41,7 @@ def index(request):
     prompt_words = np.zeros((int(h+1), int(w+1))).tolist()
     prompt_list = "<h3>Prompts:</h3> "
     j = 1
+    faulty_crossword = False
     for i, word in enumerate(word_list):
         prompt_list = prompt_list + str(j) + "   " + definition_list[i] + "<br>"
         if word in obj.word_indices:  # faulty crosswords produce bad indices, leads to errors
@@ -50,8 +51,14 @@ def index(request):
                 prompt_words[in1][in2] = j
             else:
                 prompt_words[in1][in2] = f"{prompt_words[in1][in2]}/{j}"
+        else:
+            faulty_crossword = True
         j += 1
 
+    if faulty_crossword:
+        prompt_list = prompt_list + "There was a mistake in making the crossword grid." + "<br>"
+        prompt_list = prompt_list + "List to debug the Crossword Generator:" + "<br>"
+        prompt_list = prompt_list + f"{word_list}" + "<br>"
 
     """ Create HTML Crossword Syntax """
     # dimensions of crossword: hxw
@@ -64,7 +71,7 @@ def index(request):
         "crossword_solution": html_crossword.filled_html,
 
 
-        "fetched_word_list": obj.word_indices,
+        "fetched_word_list": obj.words,
         "size": obj.size(),
         "prompt_list": prompt_list
     }

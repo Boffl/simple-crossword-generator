@@ -235,7 +235,9 @@ def main():
     words3 = ['season', 'list', 'president', 'response', 'side', 'term', 'association', 'person', 'charge', 'education']
     words4 = ['help', 'language', 'month', 'college', 'project', 'music', 'act', 'party', 'action', 'unit']
     words5 = ['reason', 'computer', 'project', 'thing', 'history', 'department', 'price', 'sir', 'room', 'man']
-    obj = crossword_generator((i for i in words1), 5)
+    too_close = ['call', 'concept', 'investment', 'element', 'condition', 'water',
+                 'list', 'recession', 'damage', 'commitment']  # see how the grid forms water and list/recession...
+    obj = crossword_generator((i for i in too_close), 10)
     print(obj.word_indices)
     print(len(obj.word_indices))
     print(obj.words)
