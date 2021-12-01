@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.http import HttpResponse
 import sys
 sys.path.append("..")
 import numpy as np
@@ -78,3 +79,7 @@ def index(request):
 
     return render(request, 'index.html', context)
 
+# refresh to make new crossword, very simple, but it works...
+def refresh(request):
+    print('refreshed the page')
+    return HttpResponse("""<html><script>window.location.replace('/');</script></html>""")
