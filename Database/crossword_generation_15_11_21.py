@@ -7,7 +7,7 @@ class crossword_generator():
         self.words = []
         self.crossword = []
         self.new_crossword = []
-        self.word_by_word(size)
+        self.word_by_word(size)  # note I lealize that size is not the best name here bc of the method
         self.words_that_did_not_fit = []
         self.word_indices = self.word_indices()
 
@@ -169,6 +169,7 @@ class crossword_generator():
 
         for i,character in enumerate(word_to_prepend):
             if column_index - i - 1 < 0:
+                column_index += 1  # we need to do this, bc the grid changes !!!
                 for ind,row in enumerate(self.crossword):
                     if ind == row_index:
                         self.new_crossword[ind].insert(0,character)
@@ -178,7 +179,7 @@ class crossword_generator():
                 self.new_crossword[row_index].pop(column_index -i -1)
                 self.new_crossword[row_index].insert(column_index -i -1,character)
         for i,character in enumerate(word_to_append):
-            if column_index +i +1 >= len(self.crossword[0]):
+            if column_index +i +1 >= len(self.new_crossword[0]):  # gotta use the new one, the old one is maybe too small by now
                 for ind,row in enumerate(self.crossword):
                     if ind == row_index:
                         self.new_crossword[ind].append(character)
@@ -234,8 +235,9 @@ def main():
     words3 = ['season', 'list', 'president', 'response', 'side', 'term', 'association', 'person', 'charge', 'education']
     words4 = ['help', 'language', 'month', 'college', 'project', 'music', 'act', 'party', 'action', 'unit']
     words5 = ['reason', 'computer', 'project', 'thing', 'history', 'department', 'price', 'sir', 'room', 'man']
-    obj = crossword_generator((i for i in words5), 3)
+    obj = crossword_generator((i for i in words1), 5)
     print(obj.word_indices)
+    print(len(obj.word_indices))
     print(obj.words)
     return obj
 
