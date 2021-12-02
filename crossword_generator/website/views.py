@@ -7,7 +7,8 @@ from Database.crossword_generation_15_11_21 import crossword_generator
 from .models import Words3
 from .helper import div_crossword
 from .helper import random_iterator
-
+from .forms import solutions
+from django.http import HttpResponseRedirect
 
 # Create your views here.
 
@@ -85,6 +86,12 @@ def refresh(request):
     return HttpResponse("""<html><script>window.location.replace('/');</script></html>""")
 
 
-def check_solutions():
+def check_solutions(request):
     """ checks entered solutions of crossword """
     print("checked!")
+    if request.method == 'POST':
+        form = solutions(request.POST)
+        return render(request, 'index.html', {'crossword_empty': form})  # methods must return HttpResponse
+    else:
+        form = solutions()
+        return render(request, 'index.html', {'crossword_empty': form})
