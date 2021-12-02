@@ -45,16 +45,23 @@ def index(request):
     j = 1
     faulty_crossword = False
     for i, word in enumerate(word_list):
-        prompt_list = prompt_list + str(j) + "   " + definition_list[i] + "<br>"
-        if word in obj.word_indices:  # faulty crosswords produce bad indices, leads to errors
-            in1, in2 = obj.word_indices[word][0]
+        direction = ''
+
+        if word in obj.word_indices:  # need to check this bc of faulty crosswords produce bad indices, leads to errors
+            position = obj.word_indices[word]  # index of last and first character of the word in the grid
+            if position[0][0] == position[1][0]:
+                direction = '(horizontal): '
+            if position[0][1] == position[1][1]:
+                direction = '(vertical): '
+            in1, in2 = position[0]
             # stupidlist.append([in1, in2])
             if prompt_words[in1][in2] == 0:
                 prompt_words[in1][in2] = j
             else:
-                prompt_words[in1][in2] = f"{prompt_words[in1][in2]}/{j}"
+                prompt_words[in1][in2] = f"{prompt_words[in1][in2]}/{j}"  # two words starting in the same place
         else:
             faulty_crossword = True
+        prompt_list = prompt_list + str(j) + direction + "   " + definition_list[i] + "<br>"
         j += 1
 
     if faulty_crossword:
