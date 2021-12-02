@@ -21,9 +21,8 @@
     </div>
 </header>
 
-
-
-</div>
+<center>
+    </div>
     <div class="container">
       <p>
         <form action="/refresh">
@@ -32,6 +31,9 @@
         </button>
         </form>
     </div>
+</center>
+
+
 
 <br>
 
@@ -43,10 +45,16 @@
 <br>
 
 <div class=crossword>
-        {% autoescape off %}
-        {{crossword_empty}}
-        {% endautoescape %}
+        <form action="/check/" method="post">
+            {% autoescape off %}
+            {{crossword_empty}}
+            {% endautoescape %}
+            <br>
+            <input type="submit" value="CHECK SOLUTIONS">
+        </form>
 </div>
+
+
 
 <div class="wordlist">
     {% autoescape off %}
@@ -58,7 +66,7 @@
 
 </div>
 
-<div class=crossword>
+<div class=crossword_solution>
         {% autoescape off %}
         {{crossword_solution}}
         {% endautoescape %}

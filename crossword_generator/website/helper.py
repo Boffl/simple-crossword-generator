@@ -30,7 +30,7 @@ class div_crossword():
         self.filled_html = self.filled_div(h, w, cw_list)
 
 
-    def input_cont(self, nr):
+    def input_cont(self, nr, coord):
         """ HTML for blank input field
             nr: number that should be displayed in corner (0 if none)
             nr_div: div container displaying small number
@@ -40,17 +40,22 @@ class div_crossword():
             str_nr = ""
         else:
             str_nr = str(nr)
+        div_id = "id1" #coordinates of div container
         nr_div = "<div style='position:absolute; font-size:0.5em'>" + str_nr + "</div>"
-        input_div = "<input type='text' minlength='1' maxlength='1' style='width:29px; height:29px;text-align:center; " \
-                "border-style:none; border-color:black; position:relative; font-weight:bold; background:transparent; " \
-               "text-transform:uppercase;'></input>"
+        input_div = "<input id='" + str(div_id) + "' " +\
+                    "type='text' minlength='1' maxlength='1' style='width:29px; height:29px;text-align:center; " \
+                    "border-style:none; border-color:black; position:relative; font-weight:bold; background:transparent; " \
+                   "text-transform:uppercase;'></input>"
         return nr_div + input_div
 
 
-    def element_empty(self, nr):
-        """ empty white div container"""
+    def element_empty(self, nr, coord):
+        """ empty white div container
+        nr: str that is displayed small in corner
+        coord: coordinates of div container
+        """
         return "<div style='width:30px; height:30px; border:thin solid; background:white; padding: 0; margin: 0;'> " \
-               + self.input_cont(nr) +"</div>"
+               + self.input_cont(nr, coord) +"</div>"
 
 
     def element_black(self):
@@ -69,7 +74,7 @@ class div_crossword():
                     empty_div = empty_div + self.element_black()
                 else:
                     nr = prompt_words[row][col]
-                    empty_div = empty_div + self.element_empty(nr)
+                    empty_div = empty_div + self.element_empty(nr, (row,col))
             empty_div = empty_div + '</div>'
         return empty_div
 

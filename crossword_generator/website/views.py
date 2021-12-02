@@ -83,3 +83,8 @@ def index(request):
 def refresh(request):
     print('refreshed the page')
     return HttpResponse("""<html><script>window.location.replace('/');</script></html>""")
+
+
+def check_solutions():
+    """ checks entered solutions of crossword """
+    print("checked!")
