@@ -40,7 +40,7 @@ def index(request):
 
     """ Render HTML Prompt List """
     prompt_words = np.zeros((int(h+1), int(w+1))).tolist()
-    prompt_list = "<h3>Prompts:</h3> "
+    prompt_list = "<h3>Prompts:</h3> <ol id='prompts'>"
     j = 1
     faulty_crossword = False
     for i, word in enumerate(word_list):
@@ -49,19 +49,29 @@ def index(request):
         if word in obj.word_indices:  # need to check this bc of faulty crosswords produce bad indices, leads to errors
             position = obj.word_indices[word]  # index of last and first character of the word in the grid
             if position[0][0] == position[1][0]:
-                direction = '(horizontal): '
+                direction = '(horizontal) '
             if position[0][1] == position[1][1]:
-                direction = '(vertical): '
+                direction = '(vertical) '
             in1, in2 = position[0]
             # stupidlist.append([in1, in2])
             if prompt_words[in1][in2] == 0:
                 prompt_words[in1][in2] = j
             else:
                 prompt_words[in1][in2] = f"{prompt_words[in1][in2]}/{j}"  # two words starting in the same place
+
         else:
             faulty_crossword = True
-        prompt_list = prompt_list + str(j) + direction + "   " + definition_list[i] + "<br>"
+        prompt_list = prompt_list + f"""
+        <li>
+            {direction} {definition_list[i]}
+            <input hidden type="text" value={word} id="hint_for_{word}"</input>
+            <button id='hint_button_for_{word}' class='hint_button' onclick="getHints(document.getElementById('hint_for_{word}').value)">
+                Hint</button>
+            <div hidden id='hint_display_for_{word}'> Hint: {hint_list[i]}</div>
+        </li> """
+
         j += 1
+    prompt_list += '</ol>'
 
     if faulty_crossword:
         prompt_list = prompt_list + "There was a mistake in making the crossword grid." + "<br>"
