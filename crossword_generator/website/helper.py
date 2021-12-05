@@ -6,7 +6,6 @@ import random
 #           - save input to list
 #           - compare input to solution list
 #           - change color of div container depending if true or not
-#       - prompt/nr reformatting (waiting on cw_generator update)
 
 class div_crossword():
     def __init__(self, obj_list, obj_size, prompt_words):
@@ -40,7 +39,7 @@ class div_crossword():
             str_nr = ""
         else:
             str_nr = str(nr)
-        div_id = "id1" #coordinates of div container
+        div_id = "letters" #coordinates of div container
         nr_div = "<div style='position:absolute; font-size:0.5em'>" + str_nr + "</div>"
         input_div = "<input id='" + str(div_id) + "' " +\
                     "type='text' minlength='1' maxlength='1' style='width:29px; height:29px;text-align:center; " \
@@ -65,7 +64,6 @@ class div_crossword():
 
     def empty_div(self, h, w, cw_list, prompt_words):
         """ Creates the HTML syntax for the empty crossword """
-        #TODO: adjust nr. depending on wheter it matches 'start position' of word
         empty_div = ""
         for row in range(h):
             empty_div = empty_div + "<div class ='row' style='padding:0; margin:0'>"

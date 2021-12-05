@@ -1,5 +1,5 @@
 from django import forms
 
-class SimpleForm(forms.Form):
+class solutions(forms.Form):
+    letters = forms.CharField()
 
-    id1 = forms.CharField()

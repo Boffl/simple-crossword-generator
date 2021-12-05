@@ -45,7 +45,8 @@
 <br>
 
 <div class=crossword>
-        <form action="/check/" method="post">
+        <form action="/check/" method="POST">
+            {% csrf_token %}
             {% autoescape off %}
             {{crossword_empty}}
             {% endautoescape %}
