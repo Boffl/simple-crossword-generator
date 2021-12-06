@@ -68,10 +68,11 @@ def index(request):
         # The button calls a function in the generate-button.js file
         prompt_list += f"""
         <li>
-            {direction} {definition_list[i]}
+            <i> {direction} </i>{definition_list[i]}
             <input hidden type="text" value={word} id="hint_for_{word}"</input> 
-            <button id='hint_button_for_{word}' class='hint_button' onclick="getHints(document.getElementById('hint_for_{word}').value)">
-                Hint</button>
+            <button id='hint_button_for_{word}' class='hint_button' onclick="getHints(document.getElementById('hint_for_{word}').value)"
+            style="border:none; color:white; background-color:black; border-radius:12px; font-size:60%; text-align:center;">
+                HINT</button>
             <div hidden id='hint_display_for_{word}'> Hint: {hint_list[i]}</div>
         </li> """
 
