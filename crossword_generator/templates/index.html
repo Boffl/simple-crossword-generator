@@ -67,7 +67,9 @@
 
 </div>
 
-<div class=crossword_solution>
+<button id="solution_button" onclick="showSolution()">Show Solution</button>
+
+<div hidden id="crossword_solution" class=crossword_solution>
         {% autoescape off %}
         {{crossword_solution}}
         {% endautoescape %}

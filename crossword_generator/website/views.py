@@ -62,16 +62,21 @@ def index(request):
 
         else:
             faulty_crossword = True
-        prompt_list = prompt_list + f"""
+
+        # basically creating a long html string, with the definition and the hint.
+        # The hint is set to be hidden and there is a button to get the hints displayed
+        # The button calls a function in the generate-button.js file
+        prompt_list += f"""
         <li>
             {direction} {definition_list[i]}
-            <input hidden type="text" value={word} id="hint_for_{word}"</input>
+            <input hidden type="text" value={word} id="hint_for_{word}"</input> 
             <button id='hint_button_for_{word}' class='hint_button' onclick="getHints(document.getElementById('hint_for_{word}').value)">
                 Hint</button>
             <div hidden id='hint_display_for_{word}'> Hint: {hint_list[i]}</div>
         </li> """
 
         j += 1
+    # don't forget
     prompt_list += '</ol>'
 
     if faulty_crossword:
