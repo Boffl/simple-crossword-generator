@@ -6,8 +6,8 @@ import numpy as np
 from Database.crossword_generation_15_11_21 import crossword_generator
 from .models import Words3
 from .helper import div_crossword
-from .helper import random_iterator
-from .forms import solutions
+from .helper import random_iterator, html_corrected
+from .forms import SolutionForm
 from django.http import HttpResponseRedirect
 
 # Create your views here.
@@ -16,15 +16,6 @@ def index(request):
     """ Main Page """
 
     """ Import Data """
-    #word_list, definition_list = [], []
-    #for i in range(1, 15):
-        # get a random word from the Database
-        #temp_obj = Words3.objects.order_by('?').first()
-        #temp_name = temp_obj.word
-        #temp_def = temp_obj.definition
-        # save the data to lists
-        #word_list.append(temp_name)
-        #definition_list.append([i, temp_def])
 
     """ Create Crosword Object """
     # iterator object (see helper.py)
@@ -90,6 +81,11 @@ def index(request):
     cw_list = obj.crossword
     html_crossword = div_crossword(cw_list, (h, w), prompt_words)
 
+    """ Save Crossword Solution to txt file"""
+    with open('solution_list.txt', 'w') as f:
+        solution_list = [el for el in [val for sublist in cw_list for val in sublist] if el != '#']
+        f.write(str(solution_list))
+
     """ Display Crossword """
     context = {
         "crossword_empty": html_crossword.empty_html,
@@ -100,7 +96,6 @@ def index(request):
         "size": obj.size(),
         "prompt_list": prompt_list
     }
-
     return render(request, 'index.html', context)
 
 # refresh to make new crossword, very simple, but it works...
@@ -109,12 +104,20 @@ def refresh(request):
     return HttpResponse("""<html><script>window.location.replace('/');</script></html>""")
 
 
-def check_solutions(request):
-    """ checks entered solutions of crossword """
-    print("checked!")
+def get_solutions(request):
+    """
+    :param request:
+    :return:
+    """
     if request.method == 'POST':
-        form = solutions(request.POST)
-        return render(request, 'index.html', {'crossword_empty': form})  # methods must return HttpResponse
+        # create a form instance and populate it with data from the request:
+        form = SolutionForm(data=request.POST)
+        if form.is_valid():
+            entered_solutions = request.POST.getlist('letters')     # list of all entered letters
+            with open('solution_list.txt', 'r') as f:
+                correct_solutions = f.read()                        # list of correct letters
+            html_corrected_crossword = html_corrected(entered_solutions, correct_solutions)
+            return render(request, 'index.html', {'crossword_empty': html_corrected_crossword})
     else:
-        form = solutions()
-        return render(request, 'index.html', {'crossword_empty': form})
+        form = SolutionForm()
+    return render(request, 'index.html', {'entered': "Sorry, something went wrong!"})

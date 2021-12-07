@@ -1,5 +1,4 @@
 from django import forms
 
-class solutions(forms.Form):
-    letters = forms.CharField()
-
+class SolutionForm(forms.Form):
+    letters = forms.CharField(required=False)
