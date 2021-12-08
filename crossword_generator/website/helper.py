@@ -8,7 +8,7 @@ import random
 #           - change color of div container depending if true or not
 
 class div_crossword():
-    def __init__(self, obj_list, obj_size, prompt_words):
+    def __init__(self, obj_list, obj_size, prompt_words, entered_solutions):
         """
         Initialize the crossword, giving access to all necessary html elements
 
@@ -21,15 +21,17 @@ class div_crossword():
         self.obj_list = obj_list
         self.obj_size = obj_size
         self.prompt_words = prompt_words
+        self.entered_solutions = entered_solutions
 
         h, w = self.obj_size
         cw_list = self.obj_list
 
         self.empty_html = self.empty_div(h, w, cw_list, prompt_words)
         self.filled_html = self.filled_div(h, w, cw_list)
+        self.corrected_html_syntax = self.corrected_html_syntax(h, w, cw_list, prompt_words, entered_solutions)
 
 
-    def input_cont(self, nr, coord):
+    def input_cont(self, nr, coord, content):
         """ HTML for blank input field
             nr: number that should be displayed in corner (0 if none)
             nr_div: div container displaying small number
@@ -44,7 +46,7 @@ class div_crossword():
         input_div = "<input name='letters' id='" + str(div_id) + "' " +\
                     "type='text' minlength='1' maxlength='1' style='width:29px; height:29px;text-align:center; " \
                     "border-style:none; border-color:black; position:relative; font-weight:bold; background:transparent; " \
-                   "text-transform:uppercase;'></input>"
+                   "text-transform:uppercase;' value=" + content + "></input>"
         return nr_div + input_div
 
 
@@ -54,7 +56,7 @@ class div_crossword():
         coord: coordinates of div container
         """
         return "<div style='width:30px; height:30px; border:thin solid; background:white; padding: 0; margin: 0;'> " \
-               + self.input_cont(nr, coord) +"</div>"
+               + self.input_cont(nr, coord, "") +"</div>"
 
 
     def element_black(self):
@@ -91,6 +93,41 @@ class div_crossword():
             filled_div = filled_div + "</div>"
         return filled_div
 
+    def element_corrected(self, nr, coord, solution, given):
+        """ empty white div container
+        nr: str that is displayed small in corner
+        coord: coordinates of div container
+        """
+        color = "#ff96a3"
+
+        if given == "" or given == " ":
+            color = "white"
+        if given.upper() == solution.upper():
+            color = "#b7edc6"
+
+
+
+        return "<div style='width:30px; height:30px; border:thin solid; background:" + color +"; padding: 0; margin: 0;'> " \
+               + self.input_cont(nr, coord, str(given)) + "</div>"
+
+
+    def corrected_html_syntax(self, h, w, cw_list, prompt_words, entered_solutions):
+        """ Creates the HTML syntax for the empty crossword """
+        # counts through the empty divs
+        empty_counter = 0
+        empty_div = "<label for='letters'></label>"
+        for row in range(h):
+            empty_div = empty_div + "<div class ='row' style='padding:0; margin:0'>"
+            for col in range(w):
+                if cw_list[row][col] == '#':
+                    empty_div = empty_div + self.element_black()
+                else:
+                    nr = prompt_words[row][col]
+                    empty_div = empty_div + self.element_corrected(nr, (row, col), cw_list[row][col], entered_solutions[empty_counter])
+                    empty_counter += 1
+            empty_div = empty_div + '</div>'
+        return empty_div
+
 
 
 def random_iterator(database: django.db.models.Model, n: int):
@@ -101,12 +138,30 @@ def random_iterator(database: django.db.models.Model, n: int):
 
 
 
-def html_corrected(entered_solutions, correct_solutions):
+def html_corrected(entered_solutions):
     """
     :param entered_solutions:
     :param correct_solutions:
     :return: html for the corrected crossword
     """
-    cw_html = str(entered_solutions) + str(correct_solutions)
+    # open file with all previous parameters and read it out
+    word_list = []
+    with open('word_list.txt', 'r') as f:
+        for line in f:
+            word_list.append(list(line))
+    h, w = len(word_list), len(word_list[0])
 
-    return cw_html
+    with open('prompt_words.txt', 'r') as f:
+        prompt_words1 = f.read().split(',')
+
+    prompt_words = []
+    for row in range(h):
+        templist = []
+        for element in range(w):
+            templist.append(prompt_words1[int(row)*w + int(element)])
+        prompt_words.append(templist)
+
+    cw_html = str(entered_solutions) + str(word_list)
+
+    html_crossword = div_crossword(word_list, (h, w-1), prompt_words, entered_solutions)
+    return html_crossword.corrected_html_syntax
