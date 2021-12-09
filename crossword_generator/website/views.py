@@ -106,7 +106,7 @@ def index(request):
         "crossword_empty": html_crossword.empty_html,
         "crossword_solution": html_crossword.filled_html,
 
-        "fetched_word_list": obj.words,
+        # "fetched_word_list": obj.words,
         "prompt_list": prompt_list
     }
     return render(request, 'index.html', context)
