@@ -55,13 +55,13 @@ class div_crossword():
         nr: str that is displayed small in corner
         coord: coordinates of div container
         """
-        return "<div style='width:30px; height:30px; border:thin solid; background:white; padding: 0; margin: 0;'> " \
-               + self.input_cont(nr, coord, "") +"</div>"
+        return "<span style='width:30px; height:30px; border:thin solid; background:white; padding: 0; margin: 0;'> " \
+               + self.input_cont(nr, coord, "") +"</span>"
 
 
     def element_black(self):
         """ black div container """
-        return "<div style='width:30px; height:30px; border:thin solid; background:black; padding: 0; margin: 0;'> </div>"
+        return "<span style='width:30px; height:30px; border:thin solid; background:black; padding: 0; margin: 0;'> </span>"
 
 
     def empty_div(self, h, w, cw_list, prompt_words):

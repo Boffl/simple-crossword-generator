@@ -10,6 +10,48 @@ function getHints(word){
 
 }
 
+
+function printCrossword(){
+
+    const crossword_original = document.getElementById("crossword");
+    const prompts_original = document.getElementById("wordlist");
+    var crossword = crossword_original.cloneNode(true)
+    var prompts = prompts_original.cloneNode(true)
+
+    //set attribute to absolute, dunno why but otherwise the styling gets messed up
+    var inputs = crossword.getElementsByTagName("input");
+    console.log(inputs)
+    for(i=0; i<inputs.length; i++){
+        inputs[i].style.position = "absolute";
+    }
+
+    //
+    var spanContainers = crossword.getElementsByTagName("span");
+    for (i=0; i<spanContainers.length; i++){
+        spanContainers[i].style.display = "inline-block"
+    }
+
+    // remove the check solution button
+    var inputButton = crossword.getElementsByClassName("submitButton");
+    inputButton[0].remove();
+
+    // remove the hint button
+    var hintButton = prompts.getElementsByClassName("hint_button");
+    const len = hintButton.length;
+    for(i=0; i<len; i++){
+        hintButton[0].remove();
+    }
+
+    var printwin = window.open("");
+    printwin.document.write(crossword.innerHTML);
+    printwin.document.write(prompts.innerHTML)
+    printwin.print();
+
+}
+
+
+
+
 function showSolution(){
     console.log('show solutions')
     const solution = document.getElementById("crossword_solution")

@@ -48,14 +48,14 @@
 
 <br>
 
-<div class=crossword>
+<div id="crossword" class=crossword>
         <form action="/check/" method="POST" enctype="multipart/form-data">
             {% csrf_token %}
             {% autoescape off %}
             {{crossword_empty}}
             {% endautoescape %}
             <br>
-            <input type="submit" value="CHECK SOLUTIONS">
+            <input class="submitButton" type="submit" value="CHECK SOLUTIONS">
         </form>
 </div>
 
@@ -64,7 +64,7 @@
 
 
 
-<div class="wordlist">
+<div id="wordlist" class="wordlist">
     {% autoescape off %}
     indices:
     {{fetched_word_list}}
@@ -75,7 +75,7 @@
 </div>
 
 <button id="solution_button" onclick="showSolution()">Show Solution</button>
-
+<button id="printCrossword" onclick="printCrossword()">Print Crossword</button>
 <div hidden id="crossword_solution" class=crossword_solution>
         {% autoescape off %}
         {{crossword_solution}}
