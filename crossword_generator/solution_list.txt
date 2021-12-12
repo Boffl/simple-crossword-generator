@@ -1,1 +1,1 @@
-<p>1: kitchen; 2: advice; 3: island; 4: task; 5: decline; 6: track; 7: search; 8: peter; 9: chair; 10: head</p>
+<p>1: form; 2: software; 3: strength; 4: technique; 5: woman; 6: conflict; 7: flat; 8: point; 9: drug; 10: summer</p>

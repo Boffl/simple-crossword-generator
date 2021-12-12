@@ -30,9 +30,19 @@ function printCrossword(){
     }
 
     //
+    crossword.style.width="100%";
+    crossword.style.width="100%";
     var spanContainers = crossword.getElementsByTagName("span");
     for (i=0; i<spanContainers.length; i++){
-        spanContainers[i].style.display = "inline-block"
+        spanContainers[i].style.display = "inline-block";
+        spanContainers[i].style.width = "50px";
+        spanContainers[i].style.height = "50px";
+    }
+
+    // make bigger numbers
+    var indexNumber = crossword.getElementsByClassName("index_number");
+    for(i=0; i<indexNumber.length; i++){
+        indexNumber[i].style.fontSize = "larger";
     }
 
     // remove the check solution button
@@ -45,6 +55,9 @@ function printCrossword(){
     for(i=0; i<len; i++){
         hintButton[0].remove();
     }
+
+    var promptlist = prompts.getElementsByTagName("ol")[0];
+    promptlist.style.fontSize = "larger";
 
     var printwin = window.open("");
     printwin.document.write(crossword.innerHTML);
