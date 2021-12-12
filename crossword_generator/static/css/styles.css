@@ -128,18 +128,22 @@ li {
     width: 12.5%;
     position: absolute;
     top: 7%;
-    right: 25%
+    right: 25%;
+    background-color: transparent;
 }
 
 .three {
     width: 12.5%;
+    background-color: transparent;
+
 }
 
 .four {
     width: 12.5%;
     position: absolute;
     top: 7%;
-    right: 15%
+    right: 15%;
+    background-color: transparent;
 }
 
 .five {
@@ -167,6 +171,7 @@ li {
     position: absolute;
     top: 7%;  
     right: 5%;
+    background-color: transparent ;
 }
 
 .crossword_solution {
