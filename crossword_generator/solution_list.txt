@@ -1,1 +1,1 @@
-['r', 'd', 'i', 's', 'c', 'u', 's', 's', 'i', 'o', 'n', 'e', 'c', 'u', 'b', 'a', 't', 'e', 'm', 'p', 'e', 'r', 'a', 't', 'u', 'r', 'e', 'a', 'l', 'e', 'u', 'p', 't', 'e', 's', 'p', 'o', 'p', 'u', 'l', 'a', 't', 'i', 'o', 'n', 'l', 'e', 'a', 'd', 'e', 'o', 'u', 'v', 'i', 'c', 't', 'o', 'r', 'y', 'm', 'n', 't', 'm', 'e', 'n', 't']
+1: damage; 2: value; 3: gallery; 4: expenditure; 5: secretary; 6: agency; 7: sale; 8: couple; 9: date; 10: master

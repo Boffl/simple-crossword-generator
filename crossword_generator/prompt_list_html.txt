@@ -1,81 +1,81 @@
 <h3>Prompts:</h3> <ol id='prompts'>
         <li>
-            <i> (horizontal)  </i>the time from noon or lunchtime to evening.
-            <input hidden type="text" value=afternoon id="hint_for_afternoon"</input> 
-            <button id='hint_button_for_afternoon' class='hint_button' onclick="getHints(document.getElementById('hint_for_afternoon').value)"
+            <i> (horizontal)  </i>physical harm that impairs the value, usefulness, or normal function of something.
+            <input hidden type="text" value=damage id="hint_for_damage"</input> 
+            <button id='hint_button_for_damage' class='hint_button' onclick="getHints(document.getElementById('hint_for_damage').value)"
             style="border:none; color:white; background-color:black; border-radius:12px; font-size:60%; text-align:center;">
                 HINT</button>
-            <div hidden id='hint_display_for_afternoon'> Hint: i telephoned this ***</div>
+            <div hidden id='hint_display_for_damage'> Hint: bombing caused extensive *** to the town</div>
         </li> 
         <li>
-            <i> (vertical)  </i>the provision of what is necessary for the health, welfare, maintenance, and protection of someone or something.
-            <input hidden type="text" value=care id="hint_for_care"</input> 
-            <button id='hint_button_for_care' class='hint_button' onclick="getHints(document.getElementById('hint_for_care').value)"
+            <i> (vertical)  </i>the regard that something is held to deserve; the importance, worth, or usefulness of something.
+            <input hidden type="text" value=value id="hint_for_value"</input> 
+            <button id='hint_button_for_value' class='hint_button' onclick="getHints(document.getElementById('hint_for_value').value)"
             style="border:none; color:white; background-color:black; border-radius:12px; font-size:60%; text-align:center;">
                 HINT</button>
-            <div hidden id='hint_display_for_care'> Hint: the *** of the elderly</div>
+            <div hidden id='hint_display_for_value'> Hint: your support is of great ***</div>
         </li> 
         <li>
-            <i> (horizontal)  </i>(in the UK) the highest legislature, consisting of the Sovereign, the House of Lords, and the House of Commons.
-            <input hidden type="text" value=parliament id="hint_for_parliament"</input> 
-            <button id='hint_button_for_parliament' class='hint_button' onclick="getHints(document.getElementById('hint_for_parliament').value)"
+            <i> (vertical)  </i>a room or building for the display or sale of works of art.
+            <input hidden type="text" value=gallery id="hint_for_gallery"</input> 
+            <button id='hint_button_for_gallery' class='hint_button' onclick="getHints(document.getElementById('hint_for_gallery').value)"
             style="border:none; color:white; background-color:black; border-radius:12px; font-size:60%; text-align:center;">
                 HINT</button>
-            <div hidden id='hint_display_for_parliament'> Hint: the secretary of state will lay proposals before ***</div>
+            <div hidden id='hint_display_for_gallery'> Hint: an art ***</div>
         </li> 
         <li>
-            <i> (vertical)  </i>the tapered, sharp end of a tool, weapon, or other object.
-            <input hidden type="text" value=point id="hint_for_point"</input> 
-            <button id='hint_button_for_point' class='hint_button' onclick="getHints(document.getElementById('hint_for_point').value)"
+            <i> (horizontal)  </i>the action of spending funds.
+            <input hidden type="text" value=expenditure id="hint_for_expenditure"</input> 
+            <button id='hint_button_for_expenditure' class='hint_button' onclick="getHints(document.getElementById('hint_for_expenditure').value)"
             style="border:none; color:white; background-color:black; border-radius:12px; font-size:60%; text-align:center;">
                 HINT</button>
-            <div hidden id='hint_display_for_point'> Hint: the *** of his dagger</div>
+            <div hidden id='hint_display_for_expenditure'> Hint: the *** of taxpayers' money</div>
         </li> 
         <li>
-            <i> (vertical)  </i>a regular gathering of people for the purchase and sale of provisions, livestock, and other commodities.
-            <input hidden type="text" value=market id="hint_for_market"</input> 
-            <button id='hint_button_for_market' class='hint_button' onclick="getHints(document.getElementById('hint_for_market').value)"
+            <i> (horizontal)  </i>a person employed by an individual or in an office to assist with correspondence, make appointments, and carry out administrative tasks.
+            <input hidden type="text" value=secretary id="hint_for_secretary"</input> 
+            <button id='hint_button_for_secretary' class='hint_button' onclick="getHints(document.getElementById('hint_for_secretary').value)"
             style="border:none; color:white; background-color:black; border-radius:12px; font-size:60%; text-align:center;">
                 HINT</button>
-            <div hidden id='hint_display_for_market'> Hint: they wanted to browse around the street ***</div>
+            <div hidden id='hint_display_for_secretary'> Hint: she was *** to david wilby mp</div>
         </li> 
         <li>
-            <i> (horizontal)  </i>the fact or state of living or having objective reality.
-            <input hidden type="text" value=existence id="hint_for_existence"</input> 
-            <button id='hint_button_for_existence' class='hint_button' onclick="getHints(document.getElementById('hint_for_existence').value)"
+            <i> (vertical)  </i>a business or organization providing a particular service on behalf of another business, person, or group.
+            <input hidden type="text" value=agency id="hint_for_agency"</input> 
+            <button id='hint_button_for_agency' class='hint_button' onclick="getHints(document.getElementById('hint_for_agency').value)"
             style="border:none; color:white; background-color:black; border-radius:12px; font-size:60%; text-align:center;">
                 HINT</button>
-            <div hidden id='hint_display_for_existence'> Hint: the organization has been in *** for fifteen years</div>
+            <div hidden id='hint_display_for_agency'> Hint: an advertising ***</div>
         </li> 
         <li>
-            <i> (horizontal)  </i>a person, animal, or plant belonging to a particular group.
-            <input hidden type="text" value=member id="hint_for_member"</input> 
-            <button id='hint_button_for_member' class='hint_button' onclick="getHints(document.getElementById('hint_for_member').value)"
+            <i> (vertical)  </i>the exchange of a commodity for money; the action of selling something.
+            <input hidden type="text" value=sale id="hint_for_sale"</input> 
+            <button id='hint_button_for_sale' class='hint_button' onclick="getHints(document.getElementById('hint_for_sale').value)"
             style="border:none; color:white; background-color:black; border-radius:12px; font-size:60%; text-align:center;">
                 HINT</button>
-            <div hidden id='hint_display_for_member'> Hint: interest from ***s of the public</div>
+            <div hidden id='hint_display_for_sale'> Hint: we withdrew it from ***</div>
         </li> 
         <li>
-            <i> (horizontal)  </i>an adult male human being.
-            <input hidden type="text" value=man id="hint_for_man"</input> 
-            <button id='hint_button_for_man' class='hint_button' onclick="getHints(document.getElementById('hint_for_man').value)"
+            <i> (vertical)  </i>two people or things of the same sort considered together.
+            <input hidden type="text" value=couple id="hint_for_couple"</input> 
+            <button id='hint_button_for_couple' class='hint_button' onclick="getHints(document.getElementById('hint_for_couple').value)"
             style="border:none; color:white; background-color:black; border-radius:12px; font-size:60%; text-align:center;">
                 HINT</button>
-            <div hidden id='hint_display_for_man'> Hint: a tall *** with a beard</div>
+            <div hidden id='hint_display_for_couple'> Hint: a *** of girls were playing marbles</div>
         </li> 
         <li>
-            <i> (vertical)  </i>the quality of being worthy of attention; importance.
-            <input hidden type="text" value=significance id="hint_for_significance"</input> 
-            <button id='hint_button_for_significance' class='hint_button' onclick="getHints(document.getElementById('hint_for_significance').value)"
+            <i> (vertical)  </i>the day of the month or year as specified by a number.
+            <input hidden type="text" value=date id="hint_for_date"</input> 
+            <button id='hint_button_for_date' class='hint_button' onclick="getHints(document.getElementById('hint_for_date').value)"
             style="border:none; color:white; background-color:black; border-radius:12px; font-size:60%; text-align:center;">
                 HINT</button>
-            <div hidden id='hint_display_for_significance'> Hint: adolescent education was felt to be a social issue of some ***</div>
+            <div hidden id='hint_display_for_date'> Hint: what's the *** today?</div>
         </li> 
         <li>
-            <i> (horizontal)  </i>vibrations that travel through the air or another medium and can be heard when they reach a person's or animal's ear.
-            <input hidden type="text" value=sound id="hint_for_sound"</input> 
-            <button id='hint_button_for_sound' class='hint_button' onclick="getHints(document.getElementById('hint_for_sound').value)"
+            <i> (horizontal)  </i>a man who has people working for him, especially servants or slaves.
+            <input hidden type="text" value=master id="hint_for_master"</input> 
+            <button id='hint_button_for_master' class='hint_button' onclick="getHints(document.getElementById('hint_for_master').value)"
             style="border:none; color:white; background-color:black; border-radius:12px; font-size:60%; text-align:center;">
                 HINT</button>
-            <div hidden id='hint_display_for_sound'> Hint: light travels faster than ***</div>
+            <div hidden id='hint_display_for_master'> Hint: he acceded to his ***'s wishes</div>
         </li> </ol>
