@@ -82,6 +82,9 @@ def index(request):
     """ Save prompt list html to txt file """
     with open('prompt_list_html.txt', 'w') as f:
         f.write(str(prompt_list))
+        
+    with open("solution_list.txt", 'w') as f:
+        f.write(solutions_string)
 
     """ Create HTML Crossword Syntax """
     # dimensions of crossword: hxw
@@ -135,6 +138,9 @@ def get_solutions(request):
             prompt_list = ""
             with open("prompt_list_html.txt", 'r') as f:
                 prompt_list = f.read()
+
+            with open("solution_list.txt", 'r') as f:
+                solutions_string = f.read()
 
             context = {
                 "crossword_empty": html_corrected_crossword,
