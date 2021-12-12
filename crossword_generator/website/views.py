@@ -146,7 +146,6 @@ def get_solutions(request):
                 "crossword_empty": html_corrected_crossword,
                 "crossword_solution": solutions_string,
                 "hidden": "hidden",
-                "crossword_solution": request.POST.getlist('letters'),
                 "fetched_word_list": "",
                 "prompt_list": prompt_list
             }
