@@ -25,7 +25,7 @@ class div_crossword():
 
         h, w = self.obj_size
         cw_list = self.obj_list
-
+        self.size = "2.2vw"
         self.empty_html = self.empty_div(h, w, cw_list, prompt_words)
         self.filled_html = self.filled_div(h, w, cw_list)
         self.corrected_html_syntax = self.corrected_html_syntax(h, w, cw_list, prompt_words, entered_solutions)
@@ -42,9 +42,13 @@ class div_crossword():
         else:
             str_nr = str(nr)
         div_id = "letters" #coordinates of div container
-        nr_div = "<div style='position:absolute; font-size:0.5em'>" + str_nr + "</div>"
+        nr_div = "<div class='index_number' style='position:absolute; font-size:0.5em'>" + str_nr + "</div>"
+        # input_div = "<input name='letters' id='" + str(div_id) + "' " +\
+        #             "type='text' minlength='1' maxlength='1' style='width:29px; height:29px;text-align:center; " \
+        #             "border-style:none; border-color:black; position:relative; font-weight:bold; background:transparent; " \
+        #            "text-transform:uppercase;' value=" + content + "></input>"
         input_div = "<input name='letters' id='" + str(div_id) + "' " +\
-                    "type='text' minlength='1' maxlength='1' style='width:29px; height:29px;text-align:center; " \
+                    "type='text' minlength='1' maxlength='1' style='width:100%; height:100%;text-align:center; " \
                     "border-style:none; border-color:black; position:relative; font-weight:bold; background:transparent; " \
                    "text-transform:uppercase;' value=" + content + "></input>"
         return nr_div + input_div
@@ -55,13 +59,13 @@ class div_crossword():
         nr: str that is displayed small in corner
         coord: coordinates of div container
         """
-        return "<span style='width:30px; height:30px; border:thin solid; background:white; padding: 0; margin: 0;'> " \
+        return f"<span style='width:{self.size}; height:{self.size}; border:thin solid; background:#e7e7e7; padding: 0; margin: 0;'> " \
                + self.input_cont(nr, coord, "") +"</span>"
 
 
     def element_black(self):
         """ black div container """
-        return "<span style='width:30px; height:30px; border:thin solid; background:black; padding: 0; margin: 0;'> </span>"
+        return f"<span style='width:{self.size}; height:{self.size}; border:thin solid; border-color:#f7f7f7; background:#f7f7f7; padding: 0; margin: 0;'> </span>"
 
 
     def empty_div(self, h, w, cw_list, prompt_words):
@@ -88,7 +92,7 @@ class div_crossword():
                 if cw_list[row][col] == '#':
                     filled_div = filled_div + self.element_black()
                 else:
-                    filled_div = filled_div + "<div class ='col-3' style='width:30px; height:30px; border:thin solid; background:white; padding: 0; margin: 0;'>" \
+                    filled_div = filled_div + f"<div class ='col-3' style='width:{self.size}; height:{self.size}; border:thin solid; background:#e7e7e7; padding: 0; margin: 0;'>" \
                                  + cw_list[row][col] + "</div>"
             filled_div = filled_div + "</div>"
         return filled_div
@@ -101,13 +105,13 @@ class div_crossword():
         color = "#ff96a3"
 
         if given == "" or given == " ":
-            color = "white"
+            color = "#e7e7e7"
         if given.upper() == solution.upper():
             color = "#b7edc6"
 
 
 
-        return "<div style='width:30px; height:30px; border:thin solid; background:" + color +"; padding: 0; margin: 0;'> " \
+        return f"<div style='width:{self.size}; height:{self.size}; border:thin solid; background:" + color +"; padding: 0; margin: 0;'> " \
                + self.input_cont(nr, coord, str(given)) + "</div>"
 
 

@@ -1,81 +1,81 @@
 <h3>Prompts:</h3> <ol id='prompts'>
         <li>
-            <i> (horizontal)  </i>decrease or fade gradually before coming to an end.
-            <input hidden type="text" value=peter id="hint_for_peter"</input> 
-            <button id='hint_button_for_peter' class='hint_button' onclick="getHints(document.getElementById('hint_for_peter').value)"
+            <i> (horizontal)  </i>a particular form of something differing in certain respects from an earlier form or other forms of the same type of thing.
+            <input hidden type="text" value=version id="hint_for_version"</input> 
+            <button id='hint_button_for_version' class='hint_button' onclick="getHints(document.getElementById('hint_for_version').value)"
             style="border:none; color:white; background-color:black; border-radius:12px; font-size:60%; text-align:center;">
                 HINT</button>
-            <div hidden id='hint_display_for_peter'> Hint: the storm had ***ed out</div>
+            <div hidden style="font-style: italic; font-weight: bold;" id='hint_display_for_version'> Hint: a revised *** of the paper was produced for a later meeting</div>
         </li> 
         <li>
-            <i> (vertical)  </i>an arrangement by which a company or the state undertakes to provide a guarantee of compensation for specified loss, damage, illness, or death in return for payment of a specified premium.
-            <input hidden type="text" value=insurance id="hint_for_insurance"</input> 
-            <button id='hint_button_for_insurance' class='hint_button' onclick="getHints(document.getElementById('hint_for_insurance').value)"
+            <i> (vertical)  </i>a public road in a city, town, or village, typically with houses and buildings on one or both sides.
+            <input hidden type="text" value=street id="hint_for_street"</input> 
+            <button id='hint_button_for_street' class='hint_button' onclick="getHints(document.getElementById('hint_for_street').value)"
             style="border:none; color:white; background-color:black; border-radius:12px; font-size:60%; text-align:center;">
                 HINT</button>
-            <div hidden id='hint_display_for_insurance'> Hint: many new borrowers take out *** against unemployment or sickness</div>
+            <div hidden style="font-style: italic; font-weight: bold;" id='hint_display_for_street'> Hint: the narrow, winding ***s of edinburgh</div>
         </li> 
         <li>
-            <i> (horizontal)  </i>an object, quality, or event whose presence or occurrence indicates the probable presence or occurrence of something else.
-            <input hidden type="text" value=sign id="hint_for_sign"</input> 
-            <button id='hint_button_for_sign' class='hint_button' onclick="getHints(document.getElementById('hint_for_sign').value)"
+            <i> (vertical)  </i>a group of living organisms consisting of similar individuals capable of exchanging genes or interbreeding. The species is the principal natural taxonomic unit, ranking below a genus and denoted by a Latin binomial, e.g. Homo sapiens.
+            <input hidden type="text" value=species id="hint_for_species"</input> 
+            <button id='hint_button_for_species' class='hint_button' onclick="getHints(document.getElementById('hint_for_species').value)"
             style="border:none; color:white; background-color:black; border-radius:12px; font-size:60%; text-align:center;">
                 HINT</button>
-            <div hidden id='hint_display_for_sign'> Hint: flowers are often given as a *** of affection</div>
+            <div hidden style="font-style: italic; font-weight: bold;" id='hint_display_for_species'> Hint: </div>
         </li> 
         <li>
-            <i> (horizontal)  </i>an intense feeling of deep affection.
-            <input hidden type="text" value=love id="hint_for_love"</input> 
-            <button id='hint_button_for_love' class='hint_button' onclick="getHints(document.getElementById('hint_for_love').value)"
+            <i> (horizontal)  </i>the state of being strikingly different from something else in juxtaposition or close association.
+            <input hidden type="text" value=contrast id="hint_for_contrast"</input> 
+            <button id='hint_button_for_contrast' class='hint_button' onclick="getHints(document.getElementById('hint_for_contrast').value)"
             style="border:none; color:white; background-color:black; border-radius:12px; font-size:60%; text-align:center;">
                 HINT</button>
-            <div hidden id='hint_display_for_love'> Hint: babies fill parents with feelings of ***</div>
+            <div hidden style="font-style: italic; font-weight: bold;" id='hint_display_for_contrast'> Hint: the day began cold and blustery, in *** to almost two weeks of uninterrupted sunshine</div>
         </li> 
         <li>
-            <i> (vertical)  </i>the fact of observing or paying attention to something.
-            <input hidden type="text" value=notice id="hint_for_notice"</input> 
-            <button id='hint_button_for_notice' class='hint_button' onclick="getHints(document.getElementById('hint_for_notice').value)"
+            <i> (horizontal)  </i>any of the regular occasions in a day when a reasonably large amount of food is eaten.
+            <input hidden type="text" value=meal id="hint_for_meal"</input> 
+            <button id='hint_button_for_meal' class='hint_button' onclick="getHints(document.getElementById('hint_for_meal').value)"
             style="border:none; color:white; background-color:black; border-radius:12px; font-size:60%; text-align:center;">
                 HINT</button>
-            <div hidden id='hint_display_for_notice'> Hint: their silence did not escape my ***</div>
+            <div hidden style="font-style: italic; font-weight: bold;" id='hint_display_for_meal'> Hint: the evening ***</div>
         </li> 
         <li>
-            <i> (horizontal)  </i>the way in which two or more people or things are connected, or the state of being connected.
-            <input hidden type="text" value=relationship id="hint_for_relationship"</input> 
-            <button id='hint_button_for_relationship' class='hint_button' onclick="getHints(document.getElementById('hint_for_relationship').value)"
+            <i> (vertical)  </i>a female child.
+            <input hidden type="text" value=girl id="hint_for_girl"</input> 
+            <button id='hint_button_for_girl' class='hint_button' onclick="getHints(document.getElementById('hint_for_girl').value)"
             style="border:none; color:white; background-color:black; border-radius:12px; font-size:60%; text-align:center;">
                 HINT</button>
-            <div hidden id='hint_display_for_relationship'> Hint: the study will assess the *** between unemployment and political attitudes</div>
+            <div hidden style="font-style: italic; font-weight: bold;" id='hint_display_for_girl'> Hint: a six-year-old ***</div>
         </li> 
         <li>
-            <i> (vertical)  </i>a thing constituting a piece of evidence about the past, especially an account kept in writing or some other permanent form.
-            <input hidden type="text" value=record id="hint_for_record"</input> 
-            <button id='hint_button_for_record' class='hint_button' onclick="getHints(document.getElementById('hint_for_record').value)"
+            <i> (horizontal)  </i>morally good, justified, or acceptable.
+            <input hidden type="text" value=right id="hint_for_right"</input> 
+            <button id='hint_button_for_right' class='hint_button' onclick="getHints(document.getElementById('hint_for_right').value)"
             style="border:none; color:white; background-color:black; border-radius:12px; font-size:60%; text-align:center;">
                 HINT</button>
-            <div hidden id='hint_display_for_record'> Hint: you should keep a written ***</div>
+            <div hidden style="font-style: italic; font-weight: bold;" id='hint_display_for_right'> Hint: i hope we're doing the *** thing</div>
         </li> 
         <li>
-            <i> (horizontal)  </i>the faculty or state of being able to see.
-            <input hidden type="text" value=vision id="hint_for_vision"</input> 
-            <button id='hint_button_for_vision' class='hint_button' onclick="getHints(document.getElementById('hint_for_vision').value)"
+            <i> (vertical)  </i>a character representing one or more of the sounds used in speech; any of the symbols of an alphabet.
+            <input hidden type="text" value=letter id="hint_for_letter"</input> 
+            <button id='hint_button_for_letter' class='hint_button' onclick="getHints(document.getElementById('hint_for_letter').value)"
             style="border:none; color:white; background-color:black; border-radius:12px; font-size:60%; text-align:center;">
                 HINT</button>
-            <div hidden id='hint_display_for_vision'> Hint: she had defective ***</div>
+            <div hidden style="font-style: italic; font-weight: bold;" id='hint_display_for_letter'> Hint: a capital ***</div>
         </li> 
         <li>
-            <i> (vertical)  </i>the phenomena of the physical world collectively, including plants, animals, the landscape, and other features and products of the earth, as opposed to humans or human creations.
-            <input hidden type="text" value=nature id="hint_for_nature"</input> 
-            <button id='hint_button_for_nature' class='hint_button' onclick="getHints(document.getElementById('hint_for_nature').value)"
+            <i> (vertical)  </i>put something on top of or in front of (something), especially in order to protect or conceal it.
+            <input hidden type="text" value=cover id="hint_for_cover"</input> 
+            <button id='hint_button_for_cover' class='hint_button' onclick="getHints(document.getElementById('hint_for_cover').value)"
             style="border:none; color:white; background-color:black; border-radius:12px; font-size:60%; text-align:center;">
                 HINT</button>
-            <div hidden id='hint_display_for_nature'> Hint: the breathtaking beauty of ***</div>
+            <div hidden style="font-style: italic; font-weight: bold;" id='hint_display_for_cover'> Hint: the table had been ***ed with a checked tablecloth</div>
         </li> 
         <li>
-            <i> (horizontal)  </i>state or assert that something is the case, typically without providing evidence or proof.
-            <input hidden type="text" value=claim id="hint_for_claim"</input> 
-            <button id='hint_button_for_claim' class='hint_button' onclick="getHints(document.getElementById('hint_for_claim').value)"
+            <i> (horizontal)  </i>the length of the space between two points.
+            <input hidden type="text" value=distance id="hint_for_distance"</input> 
+            <button id='hint_button_for_distance' class='hint_button' onclick="getHints(document.getElementById('hint_for_distance').value)"
             style="border:none; color:white; background-color:black; border-radius:12px; font-size:60%; text-align:center;">
                 HINT</button>
-            <div hidden id='hint_display_for_claim'> Hint: the prime minister ***ed that he was concerned about third world debt</div>
+            <div hidden style="font-style: italic; font-weight: bold;" id='hint_display_for_distance'> Hint: i cycled the short *** home</div>
         </li> </ol>

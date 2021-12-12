@@ -23,6 +23,8 @@ def index(request):
     obj = crossword_generator(input, 10) # create crossword with 10 words
     h, w = obj.size()  # dimensions of the crossword grid
     word_list = obj.words
+    solutions = dict((i+1, word) for i, word in enumerate(obj.words))
+    solutions_string = "; ".join([f"{key}: {value}" for key, value in solutions.items()])
     definition_list = [Words3.objects.filter(word = w)[0].definition for w in word_list]
     hint_list = [Words3.objects.filter(word = w)[0].hint for w in word_list]
     # note in the above we are getting definitions by assuming that every word only occurs once.
@@ -64,7 +66,7 @@ def index(request):
             <button id='hint_button_for_{word}' class='hint_button' onclick="getHints(document.getElementById('hint_for_{word}').value)"
             style="border:none; color:white; background-color:black; border-radius:12px; font-size:60%; text-align:center;">
                 HINT</button>
-            <div hidden id='hint_display_for_{word}'> Hint: {hint_list[i]}</div>
+            <div hidden style="font-style: italic; font-weight: bold;" id='hint_display_for_{word}'> Hint: {hint_list[i]}</div>
         </li> """
 
         j += 1
@@ -104,7 +106,7 @@ def index(request):
     """ Display Crossword """
     context = {
         "crossword_empty": html_crossword.empty_html,
-        "crossword_solution": html_crossword.filled_html,
+        "crossword_solution": solutions_string,
 
         # "fetched_word_list": obj.words,
         "prompt_list": prompt_list
@@ -135,7 +137,7 @@ def get_solutions(request):
 
             context = {
                 "crossword_empty": html_corrected_crossword,
-                "crossword_solution": "solutions",
+                "crossword_solution": request.POST.getlist('letters'),
 
                 "fetched_word_list": "",
                 "prompt_list": prompt_list

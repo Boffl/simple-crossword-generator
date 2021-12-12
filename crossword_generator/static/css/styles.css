@@ -1,11 +1,14 @@
+body {  
+    background-color: #f7f7f7;
+}
+
 
 header {
-    text-align: center;
-    background-color: #ffdd99;
-	padding-left: 15px;
-	padding-right: 15px;
-	padding-top: 15px;
-	padding-bottom: 30px;
+	padding-left: 5%;
+	padding-right: 5%;
+	padding-top: 2.5%;
+	padding-bottom: 0%;
+    color: #2b2b2b
 }
 
 body {
@@ -14,24 +17,29 @@ body {
 
 p {
     font-family: "Arial";
+    color: #2b2b2b;
 }
 
 h1 {
-    font-size: 2em;
-    color: #7d2a06;
+    font-size: 4em;
+    color: #1f1f1f;
 	font-family: "Arial";
+    font-weight: bold;
+
 }
 
 h3 {
-    font-size: 1em;
-    color: #7d2a06;
+    font-size: 1.5em;
+    color: #2b2b2b;
     font-family: "Arial";
+    font-weight: bold;
+    margin-bottom: 3%;
 }
 
 .authors {
     font-size: 0.8em;
     font-family: "Arial";
-    color: #cc5200;
+    color: #000000;
 }
 
 
@@ -42,7 +50,6 @@ h3 {
     text-align: center;
     align-content: center;
     font-family: "Arial";
-    background-color: #ffdd99;
     padding-left: 25%;
 	padding-right: 25%;
 	padding-top: 30px;
@@ -51,10 +58,124 @@ h3 {
 }
 
 .wordlist {
-    background-color: white;
-    padding-left: 20%;
+    padding-left: 10%;
 	padding-right: 15px;
 	padding-top: 30px;
 	padding-bottom: 30px;
 
+}
+
+
+button {
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    color: #000000;
+    font-size: 1em;
+    cursor: pointer;
+    border: 0em;
+    background-color: #f7f7f7 ;
+    border-radius: 5px;
+}
+
+input {
+
+    border: 0em;
+    font-size: 1em;
+    color: #000000;
+    background-color: #f7f7f7 ;
+    font-weight: bold;
+    border-radius: 5px;
+}
+
+li {
+    margin-bottom: 2%;
+}
+
+.index_number {
+    font-size: 0em;
+    position:absolute;
+}
+
+.row {
+    display: flex;
+}
+
+.row {
+    display: flex;
+}
+
+.left {
+    flex: 50%;
+    justify-content: center;
+    padding-left: 7%;
+    padding-right: 5%;
+}
+
+.right {
+    flex: 50%;
+    padding-left: 5%;
+}
+
+.row2 {
+    display: flex;
+}
+
+.Title {
+    width: 50%;
+}
+
+.two {
+    width: 12.5%;
+    position: absolute;
+    top: 7%;
+    right: 25%
+}
+
+.three {
+    width: 12.5%;
+}
+
+.four {
+    width: 12.5%;
+    position: absolute;
+    top: 7%;
+    right: 15%
+}
+
+.five {
+    width: 12.5%;
+    position: absolute;
+    top: 7%;
+    right: 40%;
+    background-color: transparent ;
+}
+
+.container {
+    padding-left: 0%;
+}
+
+.form{
+    text-align: center;
+}
+
+.hint_display_for_strategy {
+    font-style: italic;
+}
+
+.submitButton { 
+    width: 12.5%;
+    position: absolute;
+    top: 7%;  
+    right: 5%;
+}
+
+.crossword_solution {
+    padding-left: 0%;
+}
+
+.solution {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: tomato;
 }
