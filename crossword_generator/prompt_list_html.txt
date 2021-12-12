@@ -1,81 +1,81 @@
 <h3>Prompts:</h3> <ol id='prompts'>
         <li>
-            <i> (horizontal)  </i>physical harm that impairs the value, usefulness, or normal function of something.
-            <input hidden type="text" value=damage id="hint_for_damage"</input> 
-            <button id='hint_button_for_damage' class='hint_button' onclick="getHints(document.getElementById('hint_for_damage').value)"
+            <i> (horizontal)  </i>a room or area where food is prepared and cooked.
+            <input hidden type="text" value=kitchen id="hint_for_kitchen"</input> 
+            <button id='hint_button_for_kitchen' class='hint_button' onclick="getHints(document.getElementById('hint_for_kitchen').value)"
             style="border:none; color:white; background-color:black; border-radius:12px; font-size:60%; text-align:center;">
                 HINT</button>
-            <div hidden id='hint_display_for_damage'> Hint: bombing caused extensive *** to the town</div>
+            <div hidden style="font-style: italic; font-weight: bold;" id='hint_display_for_kitchen'> Hint: </div>
         </li> 
         <li>
-            <i> (vertical)  </i>the regard that something is held to deserve; the importance, worth, or usefulness of something.
-            <input hidden type="text" value=value id="hint_for_value"</input> 
-            <button id='hint_button_for_value' class='hint_button' onclick="getHints(document.getElementById('hint_for_value').value)"
+            <i> (vertical)  </i>guidance or recommendations offered with regard to prudent future action.
+            <input hidden type="text" value=advice id="hint_for_advice"</input> 
+            <button id='hint_button_for_advice' class='hint_button' onclick="getHints(document.getElementById('hint_for_advice').value)"
             style="border:none; color:white; background-color:black; border-radius:12px; font-size:60%; text-align:center;">
                 HINT</button>
-            <div hidden id='hint_display_for_value'> Hint: your support is of great ***</div>
+            <div hidden style="font-style: italic; font-weight: bold;" id='hint_display_for_advice'> Hint: my *** is to see your doctor</div>
         </li> 
         <li>
-            <i> (vertical)  </i>a room or building for the display or sale of works of art.
-            <input hidden type="text" value=gallery id="hint_for_gallery"</input> 
-            <button id='hint_button_for_gallery' class='hint_button' onclick="getHints(document.getElementById('hint_for_gallery').value)"
+            <i> (horizontal)  </i>a piece of land surrounded by water.
+            <input hidden type="text" value=island id="hint_for_island"</input> 
+            <button id='hint_button_for_island' class='hint_button' onclick="getHints(document.getElementById('hint_for_island').value)"
             style="border:none; color:white; background-color:black; border-radius:12px; font-size:60%; text-align:center;">
                 HINT</button>
-            <div hidden id='hint_display_for_gallery'> Hint: an art ***</div>
+            <div hidden style="font-style: italic; font-weight: bold;" id='hint_display_for_island'> Hint: the *** of crete</div>
         </li> 
         <li>
-            <i> (horizontal)  </i>the action of spending funds.
-            <input hidden type="text" value=expenditure id="hint_for_expenditure"</input> 
-            <button id='hint_button_for_expenditure' class='hint_button' onclick="getHints(document.getElementById('hint_for_expenditure').value)"
+            <i> (vertical)  </i>a piece of work to be done or undertaken.
+            <input hidden type="text" value=task id="hint_for_task"</input> 
+            <button id='hint_button_for_task' class='hint_button' onclick="getHints(document.getElementById('hint_for_task').value)"
             style="border:none; color:white; background-color:black; border-radius:12px; font-size:60%; text-align:center;">
                 HINT</button>
-            <div hidden id='hint_display_for_expenditure'> Hint: the *** of taxpayers' money</div>
+            <div hidden style="font-style: italic; font-weight: bold;" id='hint_display_for_task'> Hint: a new manager was given the *** of developing the club's talent</div>
         </li> 
         <li>
-            <i> (horizontal)  </i>a person employed by an individual or in an office to assist with correspondence, make appointments, and carry out administrative tasks.
-            <input hidden type="text" value=secretary id="hint_for_secretary"</input> 
-            <button id='hint_button_for_secretary' class='hint_button' onclick="getHints(document.getElementById('hint_for_secretary').value)"
+            <i> (horizontal)  </i>(typically of something regarded as good) become smaller, fewer, or less; decrease.
+            <input hidden type="text" value=decline id="hint_for_decline"</input> 
+            <button id='hint_button_for_decline' class='hint_button' onclick="getHints(document.getElementById('hint_for_decline').value)"
             style="border:none; color:white; background-color:black; border-radius:12px; font-size:60%; text-align:center;">
                 HINT</button>
-            <div hidden id='hint_display_for_secretary'> Hint: she was *** to david wilby mp</div>
+            <div hidden style="font-style: italic; font-weight: bold;" id='hint_display_for_decline'> Hint: the birth rate continued to ***</div>
         </li> 
         <li>
-            <i> (vertical)  </i>a business or organization providing a particular service on behalf of another business, person, or group.
-            <input hidden type="text" value=agency id="hint_for_agency"</input> 
-            <button id='hint_button_for_agency' class='hint_button' onclick="getHints(document.getElementById('hint_for_agency').value)"
+            <i> (horizontal)  </i>a rough path or road, typically one beaten by use rather than constructed.
+            <input hidden type="text" value=track id="hint_for_track"</input> 
+            <button id='hint_button_for_track' class='hint_button' onclick="getHints(document.getElementById('hint_for_track').value)"
             style="border:none; color:white; background-color:black; border-radius:12px; font-size:60%; text-align:center;">
                 HINT</button>
-            <div hidden id='hint_display_for_agency'> Hint: an advertising ***</div>
+            <div hidden style="font-style: italic; font-weight: bold;" id='hint_display_for_track'> Hint: follow the *** to the farm</div>
         </li> 
         <li>
-            <i> (vertical)  </i>the exchange of a commodity for money; the action of selling something.
-            <input hidden type="text" value=sale id="hint_for_sale"</input> 
-            <button id='hint_button_for_sale' class='hint_button' onclick="getHints(document.getElementById('hint_for_sale').value)"
+            <i> (vertical)  </i>try to find something by looking or otherwise seeking carefully and thoroughly.
+            <input hidden type="text" value=search id="hint_for_search"</input> 
+            <button id='hint_button_for_search' class='hint_button' onclick="getHints(document.getElementById('hint_for_search').value)"
             style="border:none; color:white; background-color:black; border-radius:12px; font-size:60%; text-align:center;">
                 HINT</button>
-            <div hidden id='hint_display_for_sale'> Hint: we withdrew it from ***</div>
+            <div hidden style="font-style: italic; font-weight: bold;" id='hint_display_for_search'> Hint: i ***ed among the rocks, but there was nothing</div>
         </li> 
         <li>
-            <i> (vertical)  </i>two people or things of the same sort considered together.
-            <input hidden type="text" value=couple id="hint_for_couple"</input> 
-            <button id='hint_button_for_couple' class='hint_button' onclick="getHints(document.getElementById('hint_for_couple').value)"
+            <i> (horizontal)  </i>decrease or fade gradually before coming to an end.
+            <input hidden type="text" value=peter id="hint_for_peter"</input> 
+            <button id='hint_button_for_peter' class='hint_button' onclick="getHints(document.getElementById('hint_for_peter').value)"
             style="border:none; color:white; background-color:black; border-radius:12px; font-size:60%; text-align:center;">
                 HINT</button>
-            <div hidden id='hint_display_for_couple'> Hint: a *** of girls were playing marbles</div>
+            <div hidden style="font-style: italic; font-weight: bold;" id='hint_display_for_peter'> Hint: the storm had ***ed out</div>
         </li> 
         <li>
-            <i> (vertical)  </i>the day of the month or year as specified by a number.
-            <input hidden type="text" value=date id="hint_for_date"</input> 
-            <button id='hint_button_for_date' class='hint_button' onclick="getHints(document.getElementById('hint_for_date').value)"
+            <i> (vertical)  </i>a separate seat for one person, typically with a back and four legs.
+            <input hidden type="text" value=chair id="hint_for_chair"</input> 
+            <button id='hint_button_for_chair' class='hint_button' onclick="getHints(document.getElementById('hint_for_chair').value)"
             style="border:none; color:white; background-color:black; border-radius:12px; font-size:60%; text-align:center;">
                 HINT</button>
-            <div hidden id='hint_display_for_date'> Hint: what's the *** today?</div>
+            <div hidden style="font-style: italic; font-weight: bold;" id='hint_display_for_chair'> Hint: </div>
         </li> 
         <li>
-            <i> (horizontal)  </i>a man who has people working for him, especially servants or slaves.
-            <input hidden type="text" value=master id="hint_for_master"</input> 
-            <button id='hint_button_for_master' class='hint_button' onclick="getHints(document.getElementById('hint_for_master').value)"
+            <i> (horizontal)  </i>the upper part of the human body, or the front or upper part of the body of an animal, typically separated from the rest of the body by a neck, and containing the brain, mouth, and sense organs.
+            <input hidden type="text" value=head id="hint_for_head"</input> 
+            <button id='hint_button_for_head' class='hint_button' onclick="getHints(document.getElementById('hint_for_head').value)"
             style="border:none; color:white; background-color:black; border-radius:12px; font-size:60%; text-align:center;">
                 HINT</button>
-            <div hidden id='hint_display_for_master'> Hint: he acceded to his ***'s wishes</div>
+            <div hidden style="font-style: italic; font-weight: bold;" id='hint_display_for_head'> Hint: </div>
         </li> </ol>

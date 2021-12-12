@@ -25,6 +25,7 @@ def index(request):
     word_list = obj.words
     solutions = dict((i+1, word) for i, word in enumerate(obj.words))
     solutions_string = "; ".join([f"{key}: {value}" for key, value in solutions.items()])
+    solutions_string = f"<p>{solutions_string}</p>"
     definition_list = [Words3.objects.filter(word = w)[0].definition for w in word_list]
     hint_list = [Words3.objects.filter(word = w)[0].hint for w in word_list]
     # note in the above we are getting definitions by assuming that every word only occurs once.
@@ -82,6 +83,9 @@ def index(request):
     with open('prompt_list_html.txt', 'w') as f:
         f.write(str(prompt_list))
 
+    with open("solution_list.txt", 'w') as f:
+        f.write(solutions_string)
+
     """ Create HTML Crossword Syntax """
     # dimensions of crossword: hxw
     cw_list = obj.crossword
@@ -107,7 +111,7 @@ def index(request):
     context = {
         "crossword_empty": html_crossword.empty_html,
         "crossword_solution": solutions_string,
-
+        "hidden": "",
         # "fetched_word_list": obj.words,
         "prompt_list": prompt_list
     }
@@ -135,15 +139,18 @@ def get_solutions(request):
             with open("prompt_list_html.txt", 'r') as f:
                 prompt_list = f.read()
 
+            with open("solution_list.txt", 'r') as f:
+                solutions_string = f.read()
+
             context = {
                 "crossword_empty": html_corrected_crossword,
+                "crossword_solution": solutions_string,
+                "hidden": "hidden",
                 "crossword_solution": request.POST.getlist('letters'),
-
                 "fetched_word_list": "",
                 "prompt_list": prompt_list
             }
             return render(request, 'index.html', context)
     else:
         form = SolutionForm()
-
     return render(request, 'index.html', {'crossword_empty': "Sorry, something went wrong!"})

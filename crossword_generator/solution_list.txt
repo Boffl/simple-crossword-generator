@@ -1,1 +1,1 @@
-1: damage; 2: value; 3: gallery; 4: expenditure; 5: secretary; 6: agency; 7: sale; 8: couple; 9: date; 10: master
+<p>1: kitchen; 2: advice; 3: island; 4: task; 5: decline; 6: track; 7: search; 8: peter; 9: chair; 10: head</p>
