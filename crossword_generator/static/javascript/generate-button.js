@@ -15,8 +15,12 @@ function printCrossword(){
 
     const crossword_original = document.getElementById("crossword");
     const prompts_original = document.getElementById("wordlist");
-    var crossword = crossword_original.cloneNode(true)
-    var prompts = prompts_original.cloneNode(true)
+    const solutions_original = document.getElementById("crossword_solution");
+    var crossword = crossword_original.cloneNode(true);
+    var prompts = prompts_original.cloneNode(true);
+    var solutions = solutions_original.cloneNode(true);
+    var solutions_p = solutions.getElementsByTagName("p")[0];
+    solutions_p.style.transform="rotate(180deg)";
 
     //set attribute to absolute, dunno why but otherwise the styling gets messed up
     var inputs = crossword.getElementsByTagName("input");
@@ -44,7 +48,8 @@ function printCrossword(){
 
     var printwin = window.open("");
     printwin.document.write(crossword.innerHTML);
-    printwin.document.write(prompts.innerHTML)
+    printwin.document.write(prompts.innerHTML);
+    printwin.document.write(solutions.innerHTML);
     printwin.print();
 
 }

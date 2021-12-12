@@ -25,6 +25,7 @@ def index(request):
     word_list = obj.words
     solutions = dict((i+1, word) for i, word in enumerate(obj.words))
     solutions_string = "; ".join([f"{key}: {value}" for key, value in solutions.items()])
+    solutions_string = f"<p>{solutions_string}</p>"
     definition_list = [Words3.objects.filter(word = w)[0].definition for w in word_list]
     hint_list = [Words3.objects.filter(word = w)[0].hint for w in word_list]
     # note in the above we are getting definitions by assuming that every word only occurs once.
@@ -111,7 +112,6 @@ def index(request):
         "crossword_empty": html_crossword.empty_html,
         "crossword_solution": solutions_string,
         "hidden": "",
-
         "prompt_list": prompt_list
     }
     return render(request, 'index.html', context)
@@ -145,11 +145,9 @@ def get_solutions(request):
                 "crossword_empty": html_corrected_crossword,
                 "crossword_solution": solutions_string,
                 "hidden": "hidden",
-
                 "prompt_list": prompt_list
             }
             return render(request, 'index.html', context)
     else:
         form = SolutionForm()
-
     return render(request, 'index.html', {'crossword_empty': "Sorry, something went wrong!"})

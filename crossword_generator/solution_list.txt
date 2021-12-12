@@ -1,1 +1,1 @@
-1: damage; 2: value; 3: gallery; 4: expenditure; 5: secretary; 6: agency; 7: sale; 8: couple; 9: date; 10: master
+<p>1: ability; 2: experience; 3: degree; 4: mark; 5: english; 6: cup; 7: hospital; 8: size; 9: instance; 10: fire</p>
