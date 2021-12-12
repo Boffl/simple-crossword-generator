@@ -67,7 +67,7 @@ def index(request):
             <button id='hint_button_for_{word}' class='hint_button' onclick="getHints(document.getElementById('hint_for_{word}').value)"
             style="border:none; color:white; background-color:black; border-radius:12px; font-size:60%; text-align:center;">
                 HINT</button>
-            <div hidden id='hint_display_for_{word}'> Hint: {hint_list[i]}</div>
+            <div hidden style="font-style: italic; font-weight: bold;" id='hint_display_for_{word}'> Hint: {hint_list[i]}</div>
         </li> """
 
         j += 1
@@ -96,9 +96,6 @@ def index(request):
                 f.write(str(element))
             f.write("\n")
 
-    with open('solution_list.txt', 'w') as f:
-        f.write(solutions_string)
-
     with open('prompt_words.txt', 'w') as f:
         for row in prompt_words:
             for element in row:
@@ -112,6 +109,7 @@ def index(request):
         "crossword_empty": html_crossword.empty_html,
         "crossword_solution": solutions_string,
         "hidden": "",
+        # "fetched_word_list": obj.words,
         "prompt_list": prompt_list
     }
     return render(request, 'index.html', context)
@@ -134,17 +132,16 @@ def get_solutions(request):
             entered_solutions = request.POST.getlist('letters')     # list of all entered letters
             html_corrected_crossword = html_corrected(entered_solutions)
 
-
+            prompt_list = ""
             with open("prompt_list_html.txt", 'r') as f:
                 prompt_list = f.read()
-
-            with open("solution_list.txt", 'r') as f:
-                solutions_string = f.read()
 
             context = {
                 "crossword_empty": html_corrected_crossword,
                 "crossword_solution": solutions_string,
                 "hidden": "hidden",
+                "crossword_solution": request.POST.getlist('letters'),
+                "fetched_word_list": "",
                 "prompt_list": prompt_list
             }
             return render(request, 'index.html', context)
