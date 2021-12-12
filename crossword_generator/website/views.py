@@ -82,7 +82,7 @@ def index(request):
     """ Save prompt list html to txt file """
     with open('prompt_list_html.txt', 'w') as f:
         f.write(str(prompt_list))
-        
+
     with open("solution_list.txt", 'w') as f:
         f.write(solutions_string)
 
