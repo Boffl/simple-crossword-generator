@@ -87,7 +87,7 @@
 <button class="four" id="solution_button" onclick="showSolution()">Show Solution</button>
 <button class="five" id="printCrossword" onclick="printCrossword()">Print Crossword</button>
 <div class="solution">
-    <div hidden id="crossword_solution" class=crossword_solution>
+    <div {{hidden}} id="crossword_solution" class=crossword_solution>
         <h3>Solution</h3>
             {% autoescape off %}
             {{crossword_solution}}
