@@ -3,9 +3,13 @@
 Language Technology and Web Applications  
 Fall Semester 2021
 
-Code for team project
+## Team A
+### Luisa Wunderlin, Jean Kesselring, Nikolaj Bauer
 
 ---
+Webapplication that generates random crosswords. The crosswords can be solved in the browser or printed out as a pdf.
+It is based on a database of the 1000 most common english nouns from https://www.wordexample.com/list/most-common-nouns-english. The prompts are dictionary definitions from https://github.com/meetDeveloper/freeDictionaryAPI.
+
 
 URL of website: http://172.23.115.113:54347/
 (only accessible inside UZH network)
