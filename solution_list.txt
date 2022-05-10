@@ -1,1 +1,0 @@
-<p>1: country; 2: presence; 3: concept; 4: practice; 5: home; 6: role; 7: major; 8: line; 9: top; 10: soil</p>
