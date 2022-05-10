@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
 from pathlib import Path
+from urllib.parse import urlparse
 import os
 
 
@@ -22,14 +23,13 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure--=)wzw9#6zfy+gfhlzpb1%))54xser(m*1j7ab+$ve=@dr8f0^'
+SECRET_KEY = os.environ['SECRET_KEY']
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 
-ALLOWED_HOSTS = ['172.23.115.113',
-		'127.0.0.1']
+ALLOWED_HOSTS = ['.herokuapp.com','localhost']
 
 # Application definition
 
@@ -79,22 +79,23 @@ WSGI_APPLICATION = 'crossword_generator.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
-"""
-database: team_a_db
-username: postgres
-password: 22b216c54a2bd9c527c5d340b5b9901f
-port: 55079
-hostname: 172.23.115.113
-"""
+
+database_url = urlparse(os.environ['DATABASE_URL'])
+username = database_url.username
+password = database_url.password
+database = database_url.path[1:]
+hostname = database_url.hostname
+port = database_url.port
+
 
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'team_a_db',
-        'USER': 'postgres',
-        'PASSWORD': '22b216c54a2bd9c527c5d340b5b9901f',
-        'HOST': '172.23.115.113',
-        'PORT': '55079',
+        'NAME': database,
+        'USER': username,
+        'PASSWORD': password,
+        'HOST': hostname,
+        'PORT': port,
     }
 }
 

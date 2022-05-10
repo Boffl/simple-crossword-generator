@@ -6,12 +6,13 @@ import requests
 import re
 from tqdm import tqdm
 import time
+import os
 
 # 1000 most common english nouns:
 df = read_csv('most-common-nouns-english.csv') # dataframe with three columns: id word plural
 
 # connecting to the database from the uri:
-result = urlparse("postgres://postgres:22b216c54a2bd9c527c5d340b5b9901f@172.23.115.113:55079/team_a_db")
+result = urlparse(os.environ['DATABASE_URL'])
 
 username = result.username
 password = result.password

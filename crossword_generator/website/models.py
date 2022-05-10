@@ -15,6 +15,6 @@ class Words3(models.Model):
 
     class Meta:
         managed = False
-        db_table = 'words_2'
+        db_table = 'words_3'
 
 

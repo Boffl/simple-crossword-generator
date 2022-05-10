@@ -1,0 +1,81 @@
+<h3>Prompts:</h3> <ol id='prompts'>
+        <li>
+            <i> (horizontal)  </i>(chiefly British) An area of land; a district, region.
+            <input hidden type="text" value=country id="hint_for_country"</input> 
+            <button id='hint_button_for_country' class='hint_button' onclick="getHints(document.getElementById('hint_for_country').value)"
+            style="border:none; color:white; background-color:black; border-radius:12px; font-size:60%; text-align:center;">
+                HINT</button>
+            <div hidden style="font-style: italic; font-weight: bold;" id='hint_display_for_country'> Hint: </div>
+        </li> 
+        <li>
+            <i> (vertical)  </i>The fact or condition of being present, or of being within sight or call, or at hand.
+            <input hidden type="text" value=presence id="hint_for_presence"</input> 
+            <button id='hint_button_for_presence' class='hint_button' onclick="getHints(document.getElementById('hint_for_presence').value)"
+            style="border:none; color:white; background-color:black; border-radius:12px; font-size:60%; text-align:center;">
+                HINT</button>
+            <div hidden style="font-style: italic; font-weight: bold;" id='hint_display_for_presence'> Hint: any painter can benefit from the *** of a live model from which to draw.</div>
+        </li> 
+        <li>
+            <i> (vertical)  </i>An abstract and general idea; an abstraction.
+            <input hidden type="text" value=concept id="hint_for_concept"</input> 
+            <button id='hint_button_for_concept' class='hint_button' onclick="getHints(document.getElementById('hint_for_concept').value)"
+            style="border:none; color:white; background-color:black; border-radius:12px; font-size:60%; text-align:center;">
+                HINT</button>
+            <div hidden style="font-style: italic; font-weight: bold;" id='hint_display_for_concept'> Hint: </div>
+        </li> 
+        <li>
+            <i> (horizontal)  </i>Repetition of an activity to improve a skill.
+            <input hidden type="text" value=practice id="hint_for_practice"</input> 
+            <button id='hint_button_for_practice' class='hint_button' onclick="getHints(document.getElementById('hint_for_practice').value)"
+            style="border:none; color:white; background-color:black; border-radius:12px; font-size:60%; text-align:center;">
+                HINT</button>
+            <div hidden style="font-style: italic; font-weight: bold;" id='hint_display_for_practice'> Hint: he will need lots of *** with the lines before he performs them.</div>
+        </li> 
+        <li>
+            <i> (horizontal)  </i>A dwelling.
+            <input hidden type="text" value=home id="hint_for_home"</input> 
+            <button id='hint_button_for_home' class='hint_button' onclick="getHints(document.getElementById('hint_for_home').value)"
+            style="border:none; color:white; background-color:black; border-radius:12px; font-size:60%; text-align:center;">
+                HINT</button>
+            <div hidden style="font-style: italic; font-weight: bold;" id='hint_display_for_home'> Hint: </div>
+        </li> 
+        <li>
+            <i> (vertical)  </i>A character or part played by a performer or actor.
+            <input hidden type="text" value=role id="hint_for_role"</input> 
+            <button id='hint_button_for_role' class='hint_button' onclick="getHints(document.getElementById('hint_for_role').value)"
+            style="border:none; color:white; background-color:black; border-radius:12px; font-size:60%; text-align:center;">
+                HINT</button>
+            <div hidden style="font-style: italic; font-weight: bold;" id='hint_display_for_role'> Hint: her dream was to get a *** in a hollywood movie, no matter how small.</div>
+        </li> 
+        <li>
+            <i> (vertical)  </i>A military rank between captain and lieutenant colonel.
+            <input hidden type="text" value=major id="hint_for_major"</input> 
+            <button id='hint_button_for_major' class='hint_button' onclick="getHints(document.getElementById('hint_for_major').value)"
+            style="border:none; color:white; background-color:black; border-radius:12px; font-size:60%; text-align:center;">
+                HINT</button>
+            <div hidden style="font-style: italic; font-weight: bold;" id='hint_display_for_major'> Hint: he used to be a *** in the army.</div>
+        </li> 
+        <li>
+            <i> (horizontal)  </i>A path through two or more points (compare ‘segment’); a continuous mark, including as made by a pen; any path, curved or straight.
+            <input hidden type="text" value=line id="hint_for_line"</input> 
+            <button id='hint_button_for_line' class='hint_button' onclick="getHints(document.getElementById('hint_for_line').value)"
+            style="border:none; color:white; background-color:black; border-radius:12px; font-size:60%; text-align:center;">
+                HINT</button>
+            <div hidden style="font-style: italic; font-weight: bold;" id='hint_display_for_line'> Hint: the arrow descended in a curved ***.</div>
+        </li> 
+        <li>
+            <i> (horizontal)  </i>The highest or uppermost part of something.
+            <input hidden type="text" value=top id="hint_for_top"</input> 
+            <button id='hint_button_for_top' class='hint_button' onclick="getHints(document.getElementById('hint_for_top').value)"
+            style="border:none; color:white; background-color:black; border-radius:12px; font-size:60%; text-align:center;">
+                HINT</button>
+            <div hidden style="font-style: italic; font-weight: bold;" id='hint_display_for_top'> Hint: his kite got caught at the *** of the tree.</div>
+        </li> 
+        <li>
+            <i> (horizontal)  </i>A mixture of mineral particles and organic material, used to support plant growth.
+            <input hidden type="text" value=soil id="hint_for_soil"</input> 
+            <button id='hint_button_for_soil' class='hint_button' onclick="getHints(document.getElementById('hint_for_soil').value)"
+            style="border:none; color:white; background-color:black; border-radius:12px; font-size:60%; text-align:center;">
+                HINT</button>
+            <div hidden style="font-style: italic; font-weight: bold;" id='hint_display_for_soil'> Hint: </div>
+        </li> </ol>

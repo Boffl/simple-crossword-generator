@@ -3,7 +3,7 @@ from django.http import HttpResponse
 import sys
 sys.path.append("..")
 import numpy as np
-from Database.crossword_generation_15_11_21 import crossword_generator
+from .crossword_generation_15_11_21 import crossword_generator
 from .models import Words3
 from .helper import div_crossword
 from .helper import random_iterator, html_corrected
