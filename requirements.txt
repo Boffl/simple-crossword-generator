@@ -4,5 +4,9 @@ numpy==1.21.4
 gunicorn
 whitenoise
 django-heroku
-
+asgiref==3.5.0
+chardet==4.0.0
+joblib==1.1.0
+tzdata==2022.1
+webcolors==1.11.1
 
