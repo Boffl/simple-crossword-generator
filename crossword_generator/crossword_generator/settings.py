@@ -41,7 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     # NEW
-    'catalog.apps.CatalogConfig',
+    'crossword_generator.catalog.apps.CatalogConfig',
     'website',
 ]
 
