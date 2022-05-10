@@ -42,7 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     # NEW
     # 'crossword_generator.crossword_generator.catalog.apps.CatalogConfig',
-    'website',
+    'crossword_generator.website',
 ]
 
 MIDDLEWARE = [
