@@ -1,1 +1,0 @@
-<p>1: assessment; 2: conference; 3: use; 4: study; 5: card; 6: play; 7: eye; 8: wine; 9: mike; 10: distance</p>
