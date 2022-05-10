@@ -1,1 +1,1 @@
-web: gunicorn crossword_generator.crossword_generator.wsgi
+web: gunicorn mysite.wsgi
