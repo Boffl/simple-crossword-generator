@@ -47,7 +47,7 @@ class div_crossword():
         #             "type='text' minlength='1' maxlength='1' style='width:29px; height:29px;text-align:center; " \
         #             "border-style:none; border-color:black; position:relative; font-weight:bold; background:transparent; " \
         #            "text-transform:uppercase;' value=" + content + "></input>"
-        input_div = "<input name='letters' id='" + str(div_id) + "' " +\
+        input_div = "<input autocomplete='off' name='letters' id='" + str(div_id) + "' " +\
                     "type='text' minlength='1' maxlength='1' style='width:100%; height:100%;text-align:center; " \
                     "border-style:none; border-color:black; position:relative; font-weight:bold; background:transparent; " \
                    "text-transform:uppercase;' value=" + content + "></input>"
