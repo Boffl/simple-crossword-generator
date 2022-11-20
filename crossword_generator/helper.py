@@ -92,7 +92,7 @@ class div_crossword():
                 if cw_list[row][col] == '#':
                     filled_div = filled_div + self.element_black()
                 else:
-                    filled_div = filled_div + f"<div class ='col-3' style='width:{self.size}; height:{self.size}; border:thin solid; background:#e7e7e7; padding: 0; margin: 0;'>" \
+                    filled_div = filled_div + f"<div class='solution_field' class ='col-3' style='width:{self.size}; height:{self.size}; border:thin solid; background:#e7e7e7; padding: 0; margin: 0;'>" \
                                  + cw_list[row][col] + "</div>"
             filled_div = filled_div + "</div>"
         return filled_div

@@ -73,7 +73,7 @@ function printCrossword(){
 function showSolution(){
     console.log('show solutions')
     const solution = document.getElementById("crossword_solution")
-    console.log(solution)
+    // console.log(solution)
     var solution_button = document.getElementById("solution_button")
     if (solution.hidden === true){
         solution_button.textContent = "Hide Solution"

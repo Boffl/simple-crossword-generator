@@ -79,41 +79,20 @@ def index(request):
         prompt_list = prompt_list + "List to debug the Crossword Generator:" + "<br>"
         prompt_list = prompt_list + f"{word_list}" + "<br>"
 
-    """ Save prompt list html to txt file """
-    with open('prompt_list_html.txt', 'w') as f:
-        f.write(str(prompt_list))
-
-    with open("solution_list.txt", 'w') as f:
-        f.write(solutions_string)
-
     """ Create HTML Crossword Syntax """
     # dimensions of crossword: hxw
     cw_list = obj.crossword
     html_crossword = div_crossword(cw_list, (h, w), prompt_words, ['']*(w*h))
 
-    print(cw_list)
-    """ Save Crossword Solution to txt file"""
-    with open('word_list.txt', 'w') as f:
-        for row in cw_list:
-            for element in row:
-                f.write(str(element))
-            f.write("\n")
-
-    with open('prompt_words.txt', 'w') as f:
-        for row in prompt_words:
-            for element in row:
-                if element == 0:
-                    f.write(" "+",")
-                else:
-                    f.write(str(element)+",")
 
     """ Display Crossword """
     context = {
         "crossword_empty": html_crossword.empty_html,
-        "crossword_solution": solutions_string,
+        "crossword_solution": html_crossword.filled_html,
         "hidden": "",
         # "fetched_word_list": obj.words,
-        "prompt_list": prompt_list
+        "prompt_list": prompt_list,
+        "crossword_solution_string": solutions_string  # is always hidden, used for the print function in js
     }
     return render(request, 'index.html', context)
 
@@ -122,34 +101,3 @@ def refresh(request):
     print('refreshed the page')
     return HttpResponse("""<html><script>window.location.replace('/');</script></html>""")
 
-
-def get_solutions(request):
-    """
-    :param request:
-    :return:
-    """
-    if request.method == 'POST':
-        # create a form instance and populate it with data from the request:
-        form = SolutionForm(data=request.POST)
-        if form.is_valid():
-            entered_solutions = request.POST.getlist('letters')     # list of all entered letters
-            html_corrected_crossword = html_corrected(entered_solutions)
-
-            prompt_list = ""
-            with open("prompt_list_html.txt", 'r') as f:
-                prompt_list = f.read()
-
-            with open("solution_list.txt", 'r') as f:
-                solutions_string = f.read()
-
-            context = {
-                "crossword_empty": html_corrected_crossword,
-                "crossword_solution": solutions_string,
-                "hidden": "hidden",
-                "fetched_word_list": "",
-                "prompt_list": prompt_list
-            }
-            return render(request, 'index.html', context)
-    else:
-        form = SolutionForm()
-    return render(request, 'templates/crossword_generator.index.html', {'crossword_empty': "Sorry, something went wrong!"})

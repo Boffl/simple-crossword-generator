@@ -64,14 +64,18 @@
             <div class="container">
               <p>
             </div>
-            <form onsubmit="checkSolution(event)" >
-                {% csrf_token %}
-                {% autoescape off %}
-                {{crossword_empty}}
-                {% endautoescape %}
-                <br>
-                <div id="check_solutions" class="check_solutions">
-                    <input class="submitButton" type="submit" value="Check Solutions">
+
+            <form id="crosswordForm">
+               <!-- {% csrf_token %} -->
+                <div id="userInput">
+
+                    {% autoescape off %}
+                    {{crossword_empty}}
+                    {% endautoescape %}
+                    <br>
+                    <div id="check_solutions" class="check_solutions">
+                        <input class="submitButton" type="submit" value="Check Solutions">
+                    </div>
                 </div>
             </form>
     </div>
@@ -92,6 +96,10 @@
             {% autoescape off %}
             {{crossword_solution}}
             {% endautoescape %}
+    </div>
+
+    <div hidden id="solution_string">
+        <p hidden>{{ crossword_solution_string }}</p>
     </div>
 </div>
 

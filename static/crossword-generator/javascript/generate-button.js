@@ -15,7 +15,7 @@ function printCrossword(){
 
     const crossword_original = document.getElementById("crossword");
     const prompts_original = document.getElementById("wordlist");
-    const solutions_original = document.getElementById("crossword_solution");
+    const solutions_original = document.getElementById("solution_string");
     var crossword = crossword_original.cloneNode(true);
     var prompts = prompts_original.cloneNode(true);
     var solutions = solutions_original.cloneNode(true);
@@ -67,13 +67,32 @@ function printCrossword(){
 
 }
 
+// Check the solution -> color the right and wrong inputs
+const inputForm = document.getElementById("crosswordForm");
+inputForm.addEventListener("submit", function(event){
+    event.preventDefault()
+    let userSolution = document.querySelectorAll("input#letters")  // they all have the same id...
+    const solution = document.querySelectorAll("div.solution_field")
 
+    for(let i = 0; i<solution.length; i++){
+        if (userSolution[i].value){
+            if(userSolution[i].value.toLowerCase() === solution[i].innerText){
+                userSolution[i].parentElement.style["background"] = "#b7edc6"
+            }else{
+                userSolution[i].parentElement.style["background"] = "#ff96a3"
+            }
+
+        }
+
+    }
+
+
+})
 
 
 function showSolution(){
     console.log('show solutions')
     const solution = document.getElementById("crossword_solution")
-    console.log(solution)
     var solution_button = document.getElementById("solution_button")
     if (solution.hidden === true){
         solution_button.textContent = "Hide Solution"
