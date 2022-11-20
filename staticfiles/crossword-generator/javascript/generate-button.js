@@ -67,15 +67,16 @@ function printCrossword(){
 
 }
 
-// Check the solution -> color the right and wrong inputs
+// Check the solution:
+// Compare with the solution crossword and color the right and wrong inputs
 const inputForm = document.getElementById("crosswordForm");
 inputForm.addEventListener("submit", function(event){
-    event.preventDefault()
+    event.preventDefault()  // no reload
     let userSolution = document.querySelectorAll("input#letters")  // they all have the same id...
     const solution = document.querySelectorAll("div.solution_field")
 
     for(let i = 0; i<solution.length; i++){
-        if (userSolution[i].value){
+        if (userSolution[i].value){  // if User has put a solution, input field is non empty
             if(userSolution[i].value.toLowerCase() === solution[i].innerText){
                 userSolution[i].parentElement.style["background"] = "#b7edc6"
             }else{
@@ -108,6 +109,3 @@ function showSolution(){
 
 
 
-function CWFunction() {
-  document.getElementById("crossword_grid").innerHTML = "CROSSWORD <br> :)";
-}
