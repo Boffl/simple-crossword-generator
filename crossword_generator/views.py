@@ -4,11 +4,8 @@ import sys
 sys.path.append("../crossword_generator")
 import numpy as np
 from .crossword_generation_15_11_21 import crossword_generator
-from .models import Words3
 from .helper import div_crossword
-from .helper import random_iterator, html_corrected
-from .forms import SolutionForm
-from django.http import HttpResponseRedirect
+from .helper import get_data_from_tsv
 
 # Create your views here.
 
@@ -19,15 +16,16 @@ def index(request):
 
     """ Create Crosword Object """
     # iterator object (see helper.py)
-    input = random_iterator(Words3, 852) # atm there are exactly 852 words in the db
+    # input = random_iterator(Words3, 852) # atm there are exactly 852 words in the db
+    input = get_data_from_tsv(r"crossword_generator/crossword_data_unique_words.tsv", 1176)
     obj = crossword_generator(input, 10) # create crossword with 10 words
     h, w = obj.size()  # dimensions of the crossword grid
     word_list = obj.words
     solutions = dict((i+1, word) for i, word in enumerate(obj.words))
     solutions_string = "; ".join([f"{key}: {value}" for key, value in solutions.items()])
     solutions_string = f"<p>{solutions_string}</p>"
-    definition_list = [Words3.objects.filter(word = w)[0].definition for w in word_list]
-    hint_list = [Words3.objects.filter(word = w)[0].hint for w in word_list]
+    definition_list = obj.defs # [Words3.objects.filter(word = w)[0].definition for w in word_list]
+    hint_list = obj.hints # [Words3.objects.filter(word = w)[0].hint for w in word_list]
     # note in the above we are getting definitions by assuming that every word only occurs once.
     # once we include homonyms and holonyms the .filter() method will return a longer list, and we have to choose
     # which definition/hint to use.

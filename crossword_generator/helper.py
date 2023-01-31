@@ -1,5 +1,6 @@
 import django
 import random
+import os
 
 #TODO:  - link generate button to python script (possibly views function)
 #       - add 'check solutions' button
@@ -133,13 +134,35 @@ class div_crossword():
         return empty_div
 
 
+# Note I now get an error here: AttributeError: module 'django' has no attribute 'db'
+# dunno why this is happening, but I want to get rid of the db anyway...
 
-def random_iterator(database: django.db.models.Model, n: int):
-    indices = list(range(n))
+# def random_iterator(database: django.db.models.Model, n: int):
+#     indices = list(range(n))
+#     random.shuffle(indices)
+#     for index in indices:
+#         yield database.objects.all()[index].word
+
+
+
+def get_random_lines(file_name, num_lines:int):
+    """randomly yield the lines of a file
+    !!! not so well suited for large files..."""
+    indices = list(range(num_lines))
     random.shuffle(indices)
     for index in indices:
-        yield database.objects.all()[index].word
+        with open(file_name, "r", encoding="utf-8") as file:
+            for i in range(index):
+                file.readline()
+            yield file.readline()
 
+def get_data_from_tsv(filename, numlines:int):
+    """yields a list with [word, frequency, hint, definition]"""
+    iterator = get_random_lines(filename, numlines)
+    for i in range(numlines):
+        data = next(iterator).split("\t")
+        data[-1] = data[-1].rstrip()
+        yield data
 
 
 def html_corrected(entered_solutions):

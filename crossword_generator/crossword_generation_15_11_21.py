@@ -2,9 +2,12 @@ from copy import deepcopy
 import re
 
 class crossword_generator():
+
     def __init__(self,input, size:int):
         self.input = input
         self.words = []
+        self.hints = []
+        self.defs = []
         self.crossword = []
         self.new_crossword = []
         self.word_by_word(size)  # note I lealize that size is not the best name here bc of the method
@@ -122,14 +125,18 @@ class crossword_generator():
         return output
 
     def word_by_word(self, size):
-        first_word = next(self.input)
-        self.words.append(first_word)
+        first_word = next(self.input)  # [word, frequency, hint, definition]
+        self.words.append(first_word[0])
+        self.hints.append(first_word[2])
+        self.defs.append(first_word[3])
         self.first_word(self.words[0])
         self.new_crossword = deepcopy(self.crossword)
-        for word in self.input:
-            if self.add_word(word):  # check if fits, and execute at the same time (double purpose function)
+        for word in self.input:  # word = [word, frequency, hint, definition]
+            if self.add_word(word[0]):  # check if fits, and execute at the same time (double purpose function)
                 self.crossword = deepcopy(self.new_crossword)
-                self.words.append(word)
+                self.words.append(word[0])
+                self.hints.append(word[2])
+                self.defs.append(word[3])
                 if len(self.words) == size:
                     break
 
